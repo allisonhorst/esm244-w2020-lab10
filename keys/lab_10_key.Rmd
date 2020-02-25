@@ -1,6 +1,6 @@
 ---
-title: "ESM 244 Lab 10 key"
-subtitle: "SQL and Python in R Markdown"
+title: "ESM 244 Lab 10 - building versatility"
+subtitle: "JSONs, databases, SQL and Python in R Markdown"
 author: "Allison Horst"
 output: html_document
 ---
@@ -17,7 +17,17 @@ library(RSQLite)
 library(reticulate)
 ```
 
-### SQL in R Markdown with `RSQLite`
+### A. Working with JSONs in R Markdown
+
+- JSON: JavaScript Object Notation
+- Machine + human readable data 
+
+Maybe the hardest part: **How do I pronounce that?** (Jay-Sawn, Jason, J-S-O-N?) 
+Answer: **It doesn't matter** (according to [Douglas Crockford](https://www.youtube.com/watch?v=zhVdWQWKRqM), and he should know...).
+
+We'll use [this JSON data](https://data.lacity.org/api/views/kkrh-b4e3/rows.json?accessType=DOWNLOAD) for community GHG emissions (LA), already added in `data/la_ghg.json`. [Click here](https://catalog.data.gov/harvest/object/e909b39d-0671-4fa5-ae43-ddee8ebbd776) for metadata. 
+
+### B. SQL in R Markdown with `RSQLite`
 
 Here, we'll explore a database containing information for public San Francisco salaries (sf_salaries_database.sqlite) accessed from Kaggle at:
 https://www.kaggle.com/kaggle/sf-salaries
@@ -94,7 +104,7 @@ From https://dbplyr.tidyverse.org/: "Note that you don’t actually need to load
 
 
 
-### Python code in R Markdown with `reticulate()`
+### C. Python code in R Markdown with `reticulate()`
 
 [`reticulate`](https://rstudio.github.io/reticulate/): "R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python >= 2.7. Integration with NumPy requires NumPy version 1.6 or higher."
 

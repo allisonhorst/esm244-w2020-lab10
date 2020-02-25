@@ -1,0 +1,965 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "kkrh-b4e3",
+      "name" : "2017 Community-Wide Greenhouse Gas Emissions",
+      "averageRating" : 0,
+      "category" : "A Livable and Sustainable City",
+      "createdAt" : 1556232013,
+      "displayType" : "table",
+      "downloadCount" : 170,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1556551122,
+      "newBackend" : true,
+      "numberOfComments" : 0,
+      "oid" : 31365063,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1556232685,
+      "publicationGroup" : 16152185,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1556232684,
+      "rowsUpdatedBy" : "wrs9-spaj",
+      "tableId" : 16152185,
+      "totalTimesRated" : 0,
+      "viewCount" : 251,
+      "viewLastModified" : 1556233035,
+      "viewType" : "tabular",
+      "approvals" : [ {
+        "reviewedAt" : 1556552571,
+        "reviewedAutomatically" : false,
+        "state" : "approved",
+        "submissionId" : 883030,
+        "submissionObject" : "public_audience_request",
+        "submissionOutcome" : "change_audience",
+        "submittedAt" : 1556552571,
+        "workflowId" : 2212,
+        "reviewer" : {
+          "id" : "mvfr-4gdn",
+          "displayName" : "Harsha Mallajosyula"
+        },
+        "submissionDetails" : {
+          "permissionType" : "READ"
+        },
+        "submissionOutcomeApplication" : {
+          "failureCount" : 0,
+          "status" : "success"
+        },
+        "submitter" : {
+          "id" : "mvfr-4gdn",
+          "displayName" : "Harsha Mallajosyula"
+        }
+      } ],
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 405801259,
+        "name" : "GPC ref No.",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "gpc_ref_no",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987131,
+        "cachedContents" : {
+          "largest" : "V.3",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "I.4.1",
+            "count" : "10"
+          }, {
+            "item" : "I.3.1",
+            "count" : "9"
+          }, {
+            "item" : "I.4.4",
+            "count" : "7"
+          }, {
+            "item" : "II.2.2",
+            "count" : "4"
+          }, {
+            "item" : "I.2.3",
+            "count" : "4"
+          }, {
+            "item" : "II.2.3",
+            "count" : "4"
+          }, {
+            "item" : "I.8.1",
+            "count" : "3"
+          }, {
+            "item" : "I.2.2",
+            "count" : "3"
+          }, {
+            "item" : "II.5.1",
+            "count" : "3"
+          }, {
+            "item" : "II.2.1",
+            "count" : "2"
+          }, {
+            "item" : "II.3.1",
+            "count" : "2"
+          }, {
+            "item" : "V.3",
+            "count" : "2"
+          }, {
+            "item" : "II.1.1",
+            "count" : "2"
+          }, {
+            "item" : "III.1.2",
+            "count" : "1"
+          }, {
+            "item" : "III.2.2",
+            "count" : "1"
+          }, {
+            "item" : "I.1.3",
+            "count" : "1"
+          }, {
+            "item" : "I.2.1",
+            "count" : "1"
+          }, {
+            "item" : "I.1.2",
+            "count" : "1"
+          }, {
+            "item" : "III.4.1",
+            "count" : "1"
+          }, {
+            "item" : "III.4.3",
+            "count" : "1"
+          } ],
+          "smallest" : "I.1.1",
+          "cardinality" : "29"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801260,
+        "name" : "Scope",
+        "dataTypeName" : "number",
+        "description" : "",
+        "fieldName" : "scope",
+        "position" : 2,
+        "renderTypeName" : "number",
+        "tableColumnId" : 79987132,
+        "cachedContents" : {
+          "largest" : "3",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "1",
+            "count" : "45"
+          }, {
+            "item" : "3",
+            "count" : "16"
+          }, {
+            "item" : "2",
+            "count" : "10"
+          } ],
+          "smallest" : "1",
+          "cardinality" : "3"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801261,
+        "name" : "GHG Emissions Source",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "ghg_emissions_source",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987133,
+        "cachedContents" : {
+          "largest" : "Transmission and distribution losses from grid-supplied energy",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "Emissions from fuel combustion within the city boundary",
+            "count" : "21"
+          }, {
+            "item" : "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption",
+            "count" : "7"
+          }, {
+            "item" : "Emissions from energy generation supplied to the grid",
+            "count" : "7"
+          }, {
+            "item" : "Transmission and distribution losses from grid-supplied energy",
+            "count" : "6"
+          }, {
+            "item" : "Emissions from grid-supplied energy consumed within the city boundary",
+            "count" : "5"
+          }, {
+            "item" : "Emissions from grid-supplied energy consumed in the city for railways",
+            "count" : "4"
+          }, {
+            "item" : "Emissions from fuel combustion for off-road transportation occurring in the city",
+            "count" : "3"
+          }, {
+            "item" : "Emissions from fugitive emissions within the city boundary",
+            "count" : "3"
+          }, {
+            "item" : "Emissions from aggregate sources and non-CO2 emission sources on land",
+            "count" : "2"
+          }, {
+            "item" : "Emissions from fuel combustion for railway transportation occuring in the city",
+            "count" : "2"
+          }, {
+            "item" : "Emissions from fuel combustion for waterborne navigation occurring in the city",
+            "count" : "2"
+          }, {
+            "item" : "Emissions from fuel combustion on-road transportation occurring in the city",
+            "count" : "2"
+          }, {
+            "item" : "Emissions from fuel combustion for aviation occurring in the city",
+            "count" : "1"
+          }, {
+            "item" : "Emissions from wastewater generated and treated within the city",
+            "count" : "1"
+          }, {
+            "item" : "Emissions from grid-supplied energy consumed in the city for on-road transportation",
+            "count" : "1"
+          }, {
+            "item" : "Emissions from solid waste generated in the city but disposed in landfills or open dumps outside the city",
+            "count" : "1"
+          }, {
+            "item" : "Emissions from wastewater generated outside the city boundary but treated within the city",
+            "count" : "1"
+          }, {
+            "item" : "Emissions from waste generated within but treated outside of the city",
+            "count" : "1"
+          }, {
+            "item" : "Emissions from solid waste generated in the city but treated biologically outside of the city",
+            "count" : "1"
+          } ],
+          "smallest" : "Emissions from aggregate sources and non-CO2 emission sources on land",
+          "cardinality" : "19"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801262,
+        "name" : "Sector",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "sector",
+        "position" : 4,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987134,
+        "cachedContents" : {
+          "largest" : "Waste",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "Stationary Energy",
+            "count" : "42"
+          }, {
+            "item" : "Transportation",
+            "count" : "22"
+          }, {
+            "item" : "Waste",
+            "count" : "5"
+          }, {
+            "item" : "Agriculture, Forestery, and Other Land Use",
+            "count" : "2"
+          } ],
+          "smallest" : "Agriculture, Forestery, and Other Land Use",
+          "cardinality" : "4"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801263,
+        "name" : "Sub-category",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "sub_category",
+        "position" : 5,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987135,
+        "cachedContents" : {
+          "largest" : "Waste incineration (4.C.2)",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "Geographic / Territorial",
+            "count" : "17"
+          }, {
+            "item" : "Non-specified industry (1.A.2.m)",
+            "count" : "11"
+          }, {
+            "item" : "Electricity generation (1.A.1.a.i)",
+            "count" : "6"
+          }, {
+            "item" : "Commercial",
+            "count" : "6"
+          }, {
+            "item" : "Petroleum refining (1.A.1.b)",
+            "count" : "5"
+          }, {
+            "item" : "Other energy industries (1.A.1.c.ii)",
+            "count" : "4"
+          }, {
+            "item" : "Fuel sales approach",
+            "count" : "3"
+          }, {
+            "item" : "Residential (1.A.4.b)",
+            "count" : "3"
+          }, {
+            "item" : "Oil",
+            "count" : "2"
+          }, {
+            "item" : "All wastewater (4.D)",
+            "count" : "2"
+          }, {
+            "item" : "City-induced activity",
+            "count" : "2"
+          }, {
+            "item" : "Combined heat and power generation (1.A.1.a.ii)",
+            "count" : "1"
+          }, {
+            "item" : "Heat plants (1.A.1.a.iii)",
+            "count" : "1"
+          }, {
+            "item" : "Waste incineration (4.C.2)",
+            "count" : "1"
+          }, {
+            "item" : "Composting",
+            "count" : "1"
+          }, {
+            "item" : "Direct N2O from managed soils",
+            "count" : "1"
+          }, {
+            "item" : "Gas",
+            "count" : "1"
+          }, {
+            "item" : "Landfill sites - Methane commitment",
+            "count" : "1"
+          }, {
+            "item" : "Commercial / Institutional (I.A.4.a)",
+            "count" : "1"
+          }, {
+            "item" : "Institutional",
+            "count" : "1"
+          } ],
+          "smallest" : "All wastewater (4.D)",
+          "cardinality" : "21"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801264,
+        "name" : "Notation \nkeys",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "notation_keys",
+        "position" : 8,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987136,
+        "cachedContents" : {
+          "non_null" : "0",
+          "null" : "71",
+          "cardinality" : "0"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801265,
+        "name" : "CO2",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "co2",
+        "position" : 9,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987137,
+        "cachedContents" : {
+          "largest" : "99120",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "-",
+            "count" : "16"
+          }, {
+            "item" : "0",
+            "count" : "4"
+          }, {
+            "item" : "1",
+            "count" : "2"
+          }, {
+            "item" : "709336",
+            "count" : "1"
+          }, {
+            "item" : "69007",
+            "count" : "1"
+          }, {
+            "item" : "986778",
+            "count" : "1"
+          }, {
+            "item" : "86",
+            "count" : "1"
+          }, {
+            "item" : "40971",
+            "count" : "1"
+          }, {
+            "item" : "4601",
+            "count" : "1"
+          }, {
+            "item" : "50",
+            "count" : "1"
+          }, {
+            "item" : "1414532",
+            "count" : "1"
+          }, {
+            "item" : "1276515",
+            "count" : "1"
+          }, {
+            "item" : "10154",
+            "count" : "1"
+          }, {
+            "item" : "3190",
+            "count" : "1"
+          }, {
+            "item" : "2383116",
+            "count" : "1"
+          }, {
+            "item" : "8347266",
+            "count" : "1"
+          }, {
+            "item" : "157",
+            "count" : "1"
+          }, {
+            "item" : "3",
+            "count" : "1"
+          }, {
+            "item" : "61605",
+            "count" : "1"
+          }, {
+            "item" : "3607418",
+            "count" : "1"
+          } ],
+          "smallest" : "-",
+          "cardinality" : "52"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801266,
+        "name" : "CH4",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "ch4",
+        "position" : 10,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987138,
+        "cachedContents" : {
+          "largest" : "986",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "-",
+            "count" : "11"
+          }, {
+            "item" : "0",
+            "count" : "11"
+          }, {
+            "item" : "5",
+            "count" : "4"
+          }, {
+            "item" : "1",
+            "count" : "2"
+          }, {
+            "item" : "1669",
+            "count" : "1"
+          }, {
+            "item" : "1258",
+            "count" : "1"
+          }, {
+            "item" : "193",
+            "count" : "1"
+          }, {
+            "item" : "79",
+            "count" : "1"
+          }, {
+            "item" : "69",
+            "count" : "1"
+          }, {
+            "item" : "4",
+            "count" : "1"
+          }, {
+            "item" : "52",
+            "count" : "1"
+          }, {
+            "item" : "134",
+            "count" : "1"
+          }, {
+            "item" : "1088",
+            "count" : "1"
+          }, {
+            "item" : "670",
+            "count" : "1"
+          }, {
+            "item" : "63",
+            "count" : "1"
+          }, {
+            "item" : "5613",
+            "count" : "1"
+          }, {
+            "item" : "7571",
+            "count" : "1"
+          }, {
+            "item" : "43",
+            "count" : "1"
+          }, {
+            "item" : "1148",
+            "count" : "1"
+          }, {
+            "item" : "32",
+            "count" : "1"
+          } ],
+          "smallest" : "-",
+          "cardinality" : "47"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801316,
+        "name" : "N2O",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "n2o",
+        "position" : 11,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987188,
+        "cachedContents" : {
+          "largest" : "97",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "0",
+            "count" : "13"
+          }, {
+            "item" : "-",
+            "count" : "12"
+          }, {
+            "item" : "12",
+            "count" : "3"
+          }, {
+            "item" : "1",
+            "count" : "2"
+          }, {
+            "item" : "6",
+            "count" : "2"
+          }, {
+            "item" : "193",
+            "count" : "1"
+          }, {
+            "item" : "50",
+            "count" : "1"
+          }, {
+            "item" : "31968",
+            "count" : "1"
+          }, {
+            "item" : "5415",
+            "count" : "1"
+          }, {
+            "item" : "5535",
+            "count" : "1"
+          }, {
+            "item" : "892",
+            "count" : "1"
+          }, {
+            "item" : "50221",
+            "count" : "1"
+          }, {
+            "item" : "1481",
+            "count" : "1"
+          }, {
+            "item" : "68",
+            "count" : "1"
+          }, {
+            "item" : "5",
+            "count" : "1"
+          }, {
+            "item" : "9311",
+            "count" : "1"
+          }, {
+            "item" : "65",
+            "count" : "1"
+          }, {
+            "item" : "1448",
+            "count" : "1"
+          }, {
+            "item" : "31",
+            "count" : "1"
+          }, {
+            "item" : "20",
+            "count" : "1"
+          } ],
+          "smallest" : "-",
+          "cardinality" : "44"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801317,
+        "name" : "Total tCO2e",
+        "dataTypeName" : "number",
+        "description" : "",
+        "fieldName" : "total_tco2e",
+        "position" : 12,
+        "renderTypeName" : "number",
+        "tableColumnId" : 79987189,
+        "cachedContents" : {
+          "largest" : "8417245",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "1",
+            "count" : "2"
+          }, {
+            "item" : "165",
+            "count" : "2"
+          }, {
+            "item" : "563572",
+            "count" : "1"
+          }, {
+            "item" : "963",
+            "count" : "1"
+          }, {
+            "item" : "37650",
+            "count" : "1"
+          }, {
+            "item" : "55276",
+            "count" : "1"
+          }, {
+            "item" : "125784",
+            "count" : "1"
+          }, {
+            "item" : "8417245",
+            "count" : "1"
+          }, {
+            "item" : "4699",
+            "count" : "1"
+          }, {
+            "item" : "7612",
+            "count" : "1"
+          }, {
+            "item" : "6074",
+            "count" : "1"
+          }, {
+            "item" : "50221",
+            "count" : "1"
+          }, {
+            "item" : "5613",
+            "count" : "1"
+          }, {
+            "item" : "69319",
+            "count" : "1"
+          }, {
+            "item" : "1277826",
+            "count" : "1"
+          }, {
+            "item" : "1345",
+            "count" : "1"
+          }, {
+            "item" : "4631",
+            "count" : "1"
+          }, {
+            "item" : "99222",
+            "count" : "1"
+          }, {
+            "item" : "1449883",
+            "count" : "1"
+          }, {
+            "item" : "221",
+            "count" : "1"
+          } ],
+          "smallest" : "1",
+          "cardinality" : "69"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801318,
+        "name" : "CO2(b)",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "co2_b",
+        "position" : 13,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987190,
+        "cachedContents" : {
+          "largest" : "7104",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "-",
+            "count" : "67"
+          }, {
+            "item" : "7104",
+            "count" : "1"
+          }, {
+            "item" : "63974",
+            "count" : "1"
+          }, {
+            "item" : "200448",
+            "count" : "1"
+          }, {
+            "item" : "108361",
+            "count" : "1"
+          } ],
+          "smallest" : "-",
+          "cardinality" : "5"
+        },
+        "format" : { }
+      }, {
+        "id" : 405801319,
+        "name" : "Description of method(s) used or explanation for using notation key(s)",
+        "dataTypeName" : "text",
+        "description" : "",
+        "fieldName" : "description_of_method_s_used",
+        "position" : 14,
+        "renderTypeName" : "text",
+        "tableColumnId" : 79987191,
+        "cachedContents" : {
+          "largest" : "While direct emissions output data were used from the EPA database, this is a less transparent method as it sheds no light on the magnitude of activity causing the emissions.",
+          "non_null" : "71",
+          "null" : "0",
+          "top" : [ {
+            "item" : "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor.",
+            "count" : "24"
+          }, {
+            "item" : "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%).",
+            "count" : "7"
+          }, {
+            "item" : "Derived from the 2017 Metro Energy and Resource Report and NTD database which describes total electric rail propulsion-related emissions and energy use. Determined the amount  of emissions for Los Angles community inventory based on the percentage of total miles of MetroRail routes that occur within the city and on route trip frequency.",
+            "count" : "4"
+          }, {
+            "item" : "Metered consumption data provided by utility company and mulitplied by utility-specific emission factors to estimate emissions.",
+            "count" : "4"
+          }, {
+            "item" : "The Port of Los Angeles (POLA) prepares annual emission inventories for all operations including harbor craft and ocean going  vessels.  Detailed methods are described in the POLA documents (see data sources).  Energy use for vessels is  modeled for propulsion engines, auxiliary engines, auxiliary boilers and uses and multiplies the quantity of operations (under power and at port) per vessel type by average energy use  per vessel type  per operating condition  assumptions. For use  in the community emissions inventory, all harbor craft emission were included as Scope 1 assuming the majority of HC vessel operations occur within the city limits.",
+            "count" : "3"
+          }, {
+            "item" : "Metered consumption data provided by utility company and multiplied by EPA natural gas emissions factor.",
+            "count" : "3"
+          }, {
+            "item" : "The number of wells located in the city is multiplied by a default emissions factor (emissions per well per year).",
+            "count" : "2"
+          }, {
+            "item" : "Calculated emissions using VMT data from the South Coast Associations of Governments origin-destination travel model vehicle class by fuel type and  emission factors from EMFAC 2014 by vehicle class by fuel type by speed bin.",
+            "count" : "2"
+          }, {
+            "item" : "Direct N2O emissions were estimated from data on wet tons of biosolids provided by LASAN. Wet tons were converted to dry tons using a solid waste concentration specific to each WWTP that produced the biosolids. Direct N2O emission factors were taken from CARB and IPCC.",
+            "count" : "1"
+          }, {
+            "item" : "Used methane commitment method and city-specific tonnage, state-wide waste characterization, and landfill-specific methane capture rates to calculate emissions from community's waste stream sent to landfills.",
+            "count" : "1"
+          }, {
+            "item" : "Estimate from the Long Beach Southeast Resource Recovery Facility (SERRF) report of annual non-biogenic emissions to the California Air Resources Board as part of the State mandatory reporting requirements for large emitters. Estimating Los Angeles contribution of emissions calculated using the percentage of LA generated waste compared sent to facility versus total waste sent to the facility.",
+            "count" : "1"
+          }, {
+            "item" : "Indirect N2O emissions were estimated from data on wet tons of biosolids provided by LASAN. Wet tons were converted to dry tons using a solid waste concentration specific to each WWTP that produced the biosolids. Direct N2O emission factors were taken from CARB and IPCC.",
+            "count" : "1"
+          }, {
+            "item" : "The AEDT model used by CDM Smith for LAWA provided the quantity of jet fuel used for landing, take-off, and idling/taxiing operations at LAX. Emission factors for jet fuel were obtained from the EPA.",
+            "count" : "1"
+          }, {
+            "item" : "Estimates of diesel powered off-road  vehicle and equipment emissions and energy use data was obtained from the California Air Resources Board (CARB) OffRoad2007 model. Data  for Los Angeles County were scaled  to the City of Los Angeles (community) using the proportion of population,  building permits, warehouse employment, commercial employment in the city compared to in the county.",
+            "count" : "1"
+          }, {
+            "item" : "Scope 3  'cruise' aircraft emissions were calculated based on fuel sales records from Los Angeles World  Airport (LAWA). To estimate emissions from departing  flights, the total jet fuel consumption was multiplied by 50% assuming that half of the flights are departure and half are arrival. To avoid doubling counting with the scope 1 emisisons reported above, 50% of the 'On-Airport' aircraft fuel use  was subtracted  from the deaprture flight  fuel use estimate.",
+            "count" : "1"
+          }, {
+            "item" : "Estimates of CNG/LPG powered off-road  vehicle and equipment emissions and energy use data was obtained from the California Air Resources Board (CARB) OffRoad2007 model. Data  for Los Angeles County were scaled  to the City of Los Angeles (community) using the proportion of population,  building permits, warehouse employment, commercial employment in the city compared to in the county.",
+            "count" : "1"
+          }, {
+            "item" : "While direct emissions output data were used from the EPA database, this is a less transparent method as it sheds no light on the magnitude of activity causing the emissions.",
+            "count" : "1"
+          }, {
+            "item" : "Data on  emissions from wastewater treatment for the LADWP region obtained by first estimating emissions from the service area of the 4 treatment facilities using LGOP methodology, and then scaling it to  the portion generated by the City of Los Angeles (community) using  population as the scaling factor (3,884,340 person / 5,145,000  total persons served)",
+            "count" : "1"
+          }, {
+            "item" : "Annual electricity consumption data was obtained directly from LADWP and multiplied with utility-specific emsision factors to calculate emissions.",
+            "count" : "1"
+          }, {
+            "item" : "Calculated using the CIRIS tool using total volume of natural gas consumed in city multiplied by default fugitive natural gas loss factors for developed nations.",
+            "count" : "1"
+          } ],
+          "smallest" : "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor.",
+          "cardinality" : "30"
+        },
+        "format" : { }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "custom_fields" : {
+          "Committed Update Frequency" : {
+            "Refresh rate" : "Other - See Description"
+          },
+          "Location Specified" : {
+            "Does this data have a Location column? (Yes or No)" : "No"
+          },
+          "Data Owner" : {
+            "Department" : "LA Sanitation"
+          }
+        },
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+      },
+      "owner" : {
+        "id" : "wrs9-spaj",
+        "displayName" : "JPathman",
+        "screenName" : "JPathman",
+        "type" : "interactive",
+        "userSegment" : "site_member",
+        "flags" : [ "mayBeStoriesCoOwner" ]
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "wrs9-spaj",
+        "displayName" : "JPathman",
+        "screenName" : "JPathman",
+        "type" : "interactive",
+        "userSegment" : "site_member",
+        "flags" : [ "mayBeStoriesCoOwner" ]
+      },
+      "flags" : [ "default", "restorable", "restorePossibleForType" ]
+    }
+  },
+  "data" : [ [ "row-e2ri.4xun.cybv", "00000000-0000-0000-E48F-F60DA1074287", 0, 1556232684, null, 1556232684, null, "{ }", "I.1.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Residential (1.A.4.b)", null, "2383116", "1258", "1190", "2385563", "-", "Metered consumption data provided by utility company and multiplied by EPA natural gas emissions factor." ]
+, [ "row-cm88_82if.38a9", "00000000-0000-0000-E898-AC9906740620", 0, 1556232684, null, 1556232684, null, "{ }", "I.1.2", "2", "Emissions from grid-supplied energy consumed within the city boundary", "Stationary Energy", "Residential (1.A.4.b)", null, "2810172", "5448", "7253", "2822874", "-", "Metered consumption data provided by utility company and mulitplied by utility-specific emission factors to estimate emissions." ]
+, [ "row-rrer-8dxs_5qjy", "00000000-0000-0000-B77F-717B6D8671B7", 0, 1556232684, null, 1556232684, null, "{ }", "I.1.3", "3", "Transmission and distribution losses from grid-supplied energy", "Stationary Energy", "Residential (1.A.4.b)", null, "345651", "670", "892", "347213", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%)." ]
+, [ "row-qmg8.iw3x_8vt6", "00000000-0000-0000-1507-C631FC45C212", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Commercial / Institutional (I.A.4.a)", null, "1448395", "764", "723", "1449883", "-", "Metered consumption data provided by utility company and multiplied by EPA natural gas emissions factor." ]
+, [ "row-6p6e_f8gp.pcqc", "00000000-0000-0000-FB4B-6F3DBD307073", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.2", "2", "Emissions from grid-supplied energy consumed within the city boundary", "Stationary Energy", "Commercial", null, "3607418", "6994", "9311", "3623723", "-", "Metered consumption data provided by utility company and mulitplied by utility-specific emission factors to estimate emissions." ]
+, [ "row-sd7z_gkmt.e5kg", "00000000-0000-0000-388A-19BB28D79B14", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.2", "2", "Emissions from grid-supplied energy consumed within the city boundary", "Stationary Energy", "Institutional", null, "860703", "1669", "2222", "864593", "-", "Metered consumption data provided by utility company and mulitplied by utility-specific emission factors to estimate emissions." ]
+, [ "row-4ad6-ue2q-kk6k", "00000000-0000-0000-F849-16F55BF44FBD", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.2", "2", "Emissions from grid-supplied energy consumed within the city boundary", "Stationary Energy", "Commercial", null, "40971", "79", "106", "41157", "-", "Annual electricity data related to water services in LA was provided by LADWP, and multiplied by utility specifc emission factors to calculate emissions" ]
+, [ "row-pjpg.uwyy.snxr", "00000000-0000-0000-E82D-F16F0B0C809D", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.3", "3", "Transmission and distribution losses from grid-supplied energy", "Stationary Energy", "Commercial", null, "573959", "1113", "1481", "576553", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and 2017-18 (12.0%)" ]
+, [ "row-2u7d_5jgd_sk4i", "00000000-0000-0000-1C1A-0DFC858BCD13", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.3", "3", "Transmission and distribution losses from grid-supplied energy", "Stationary Energy", "Commercial", null, "-", "-", "-", "59362", "-", "Annual electricity data related to water services in LA was provided by SWP, and multiplied by utility specifc emission factors to calculate emissions" ]
+, [ "row-eaqr.f8jc~4n9c", "00000000-0000-0000-2871-348909E4109A", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.3", "3", "Transmission and distribution losses from grid-supplied energy", "Stationary Energy", "Commercial", null, "-", "-", "-", "792", "-", "Annual electricity data related to water services in LA was provided by SCE, and multiplied by utility specifc emission factors to calculate emissions" ]
+, [ "row-8i66-cf7a.b4qn", "00000000-0000-0000-87C8-1F58D770D2DE", 0, 1556232684, null, 1556232684, null, "{ }", "I.2.3", "3", "Transmission and distribution losses from grid-supplied energy", "Stationary Energy", "Commercial", null, "-", "-", "-", "4379", "-", "Annual electricity data related to water services in LA was provided by Hoover/Parker/SCE and multiplied by utility specifc emission factors to calculate emissions" ]
+, [ "row-6nka-z53p-cf4z", "00000000-0000-0000-D987-204FCD8BA0DA", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "1276515", "674", "638", "1277826", "-", "Metered consumption data provided by utility company and multiplied by EPA natural gas emissions factor." ]
+, [ "row-g3wg-ddrm_m4x3", "00000000-0000-0000-48D6-927609427656", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "1434", "2", "6", "1443", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-acm8_gvwf~zusp", "00000000-0000-0000-6AAB-58C32E57729C", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "1904272", "16662", "20698", "1941633", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-736n-s2ai_57q5", "00000000-0000-0000-1130-64AD716E6153", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "4601", "5", "12", "4618", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-2993.pdwg.47va", "00000000-0000-0000-ADD8-3CEED7D9281B", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "157", "0", "0", "158", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-nn2w.ujjb-pp4t", "00000000-0000-0000-4A74-E9D8FA5C0020", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "0", "59", "56", "115", "63974", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-p4hv-93ip.vghi", "00000000-0000-0000-9234-9DDBBFA7D325", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "0", "345", "644", "989", "200448", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-yqht-k7q6.peum", "00000000-0000-0000-5532-E8E7B16A8218", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "3467707", "1696", "1605", "3471007", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-smiv~p9ae_v2d2", "00000000-0000-0000-0110-7838B343A5D7", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "263", "0", "2", "266", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-2vhd~e2vj_smvt", "00000000-0000-0000-DB11-A0FB44C5C2C0", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.2", "2", "Emissions from grid-supplied energy consumed within the city boundary", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "561036", "1088", "1448", "563572", "-", "Metered consumption data provided by utility company and mulitplied by utility-specific emission factors to estimate emissions." ]
+, [ "row-5tww_qdaa_rebr", "00000000-0000-0000-BA31-9833228DAAF0", 0, 1556232684, null, 1556232684, null, "{ }", "I.3.3", "3", "Transmission and distribution losses from grid-supplied energy", "Stationary Energy", "Non-specified industry (1.A.2.m)", null, "69007", "134", "178", "69319", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%)." ]
+, [ "row-ctdh_k944_n26m", "00000000-0000-0000-C620-F962AD7D9C7F", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Petroleum refining (1.A.1.b)", null, "709336", "347", "328", "710011", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-762n~b24a~7r3t", "00000000-0000-0000-830D-7E2598E73195", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Heat plants (1.A.1.a.iii)", null, "99120", "52", "50", "99222", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-e3b6~ddht-zqzc", "00000000-0000-0000-B3B0-EECDB1E8C76C", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Petroleum refining (1.A.1.b)", null, "11663", "986", "31", "12679", "-", "While direct emissions output data were used from the EPA database, this is a less transparent method as it sheds no light on the magnitude of activity causing the emissions." ]
+, [ "row-h7tq.zrtq~d2zq", "00000000-0000-0000-4232-4C03A8078529", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Petroleum refining (1.A.1.b)", null, "131016", "69", "65", "131150", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-3eur.ca7f.sjqb", "00000000-0000-0000-49E7-3C7862A0DCF2", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Petroleum refining (1.A.1.b)", null, "50", "0", "0", "50", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-eexa.wsft_p4zx", "00000000-0000-0000-78D6-ACCB0E99ACBC", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Petroleum refining (1.A.1.b)", null, "4682", "5", "12", "4699", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-jkys-efye-87dh", "00000000-0000-0000-AB01-6A98EC96F717", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Other energy industries (1.A.1.c.ii)", null, "86", "0", "0", "87", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-fcci~jme3~gbvt", "00000000-0000-0000-DACB-9A97E7F3121D", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Other energy industries (1.A.1.c.ii)", null, "6", "0", "0", "6", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-euum_aci5-zj6e", "00000000-0000-0000-18A9-1588C93FF733", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Other energy industries (1.A.1.c.ii)", null, "10154", "5", "5", "10164", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-msg3_i7n2-a8d4", "00000000-0000-0000-38D4-FCA16057EA6E", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.1", "1", "Emissions from fuel combustion within the city boundary", "Stationary Energy", "Other energy industries (1.A.1.c.ii)", null, "1", "0", "0", "1", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-km85-2x3h-esjh", "00000000-0000-0000-AF05-3EEA1028B645", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.4", "1", "Emissions from energy generation supplied to the grid", "Stationary Energy", "Electricity generation (1.A.1.a.i)", null, "0", "7", "6", "13", "7104", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-visp_bf9x_gf7c", "00000000-0000-0000-2B46-F56E9E745189", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.4", "1", "Emissions from energy generation supplied to the grid", "Stationary Energy", "Electricity generation (1.A.1.a.i)", null, "3493", "4", "9", "3506", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-vjfy_vaq4_nka8", "00000000-0000-0000-831B-3CF8A12507AD", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.4", "1", "Emissions from energy generation supplied to the grid", "Stationary Energy", "Electricity generation (1.A.1.a.i)", null, "1", "0", "0", "1", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-5jwt_hfep~8u3e", "00000000-0000-0000-4E77-D19A6C723D26", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.4", "1", "Emissions from energy generation supplied to the grid", "Stationary Energy", "Electricity generation (1.A.1.a.i)", null, "0", "186", "348", "534", "108361", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-scxa.7iak.jewi", "00000000-0000-0000-0CBE-8FF4DE41EEA7", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.4", "1", "Emissions from energy generation supplied to the grid", "Stationary Energy", "Electricity generation (1.A.1.a.i)", null, "1414532", "746", "706", "1415985", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-rxbx~meqj-8bdp", "00000000-0000-0000-C6C5-821F526CF9B8", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.4", "1", "Emissions from energy generation supplied to the grid", "Stationary Energy", "Electricity generation (1.A.1.a.i)", null, "3", "0", "0", "3", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-jhxg_x924.g5kn", "00000000-0000-0000-139A-22819E8D7FED", 0, 1556232684, null, 1556232684, null, "{ }", "I.4.4", "1", "Emissions from energy generation supplied to the grid", "Stationary Energy", "Combined heat and power generation (1.A.1.a.ii)", null, "962", "1", "0", "963", "-", "Activity data obtained from SCAQMD database. Emissions calculated by multiplying activity by the relevant U.S. EPA emission factor." ]
+, [ "row-vvrh-cg77~tdx6", "00000000-0000-0000-822B-6302570D9907", 0, 1556232684, null, 1556232684, null, "{ }", "I.8.1", "1", "Emissions from fugitive emissions within the city boundary", "Stationary Energy", "Oil", null, "-", "5613", "-", "5613", "-", "The number of wells located in the city is multiplied by a default emissions factor (emissions per well per year)." ]
+, [ "row-ym5x-uqh5~nn7q", "00000000-0000-0000-E394-9290441E4D16", 0, 1556232684, null, 1556232684, null, "{ }", "I.8.1", "1", "Emissions from fugitive emissions within the city boundary", "Stationary Energy", "Oil", null, "-", "2302", "-", "2302", "-", "The number of wells located in the city is multiplied by a default emissions factor (emissions per well per year)." ]
+, [ "row-5bx3.yx3i.dvxr", "00000000-0000-0000-7097-72221FC08180", 0, 1556232684, null, 1556232684, null, "{ }", "I.8.1", "1", "Emissions from fugitive emissions within the city boundary", "Stationary Energy", "Gas", null, "179", "108387", "-", "108566", "-", "Calculated using the CIRIS tool using total volume of natural gas consumed in city multiplied by default fugitive natural gas loss factors for developed nations." ]
+, [ "row-cq94.j4rn~a3kq", "00000000-0000-0000-E73D-53877D85BACC", 0, 1556232684, null, 1556232684, null, "{ }", "II.1.1", "1", "Emissions from fuel combustion on-road transportation occurring in the city", "Transportation", "City-induced activity", null, "3789470", "467", "12093", "3802030", "-", "Calculated emissions using VMT data from the South Coast Associations of Governments origin-destination travel model vehicle class by fuel type and  emission factors from EMFAC 2014 by vehicle class by fuel type by speed bin." ]
+, [ "row-cj3y_9jvg-hx6x", "00000000-0000-0000-D482-BBBA49A78B77", 0, 1556232684, null, 1556232684, null, "{ }", "II.1.1", "1", "Emissions from fuel combustion on-road transportation occurring in the city", "Transportation", "City-induced activity", null, "588761", "261", "5535", "594556", "-", "Calculated emissions using VMT data from the South Coast Associations of Governments origin-destination travel model vehicle class by fuel type and  emission factors from EMFAC 2014 by vehicle class by fuel type by speed bin." ]
+, [ "row-6vt7.687w~bf3e", "00000000-0000-0000-211B-BEBEF12CA042", 0, 1556232684, null, 1556232684, null, "{ }", "II.1.2", "2", "Emissions from grid-supplied energy consumed in the city for on-road transportation", "Transportation", "Fuel sales approach", null, "61605", "119", "159", "61884", "-", "Annual electricity consumption data was obtained directly from LADWP and multiplied with utility-specific emsision factors to calculate emissions." ]
+, [ "row-2w9y-gk32~6kum", "00000000-0000-0000-CE4C-F124EADE10D9", 0, 1556232684, null, 1556232684, null, "{ }", "II.1.3", "3", "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption", "Transportation", "Fuel sales approach", null, "7577", "15", "20", "7612", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%)." ]
+, [ "row-fe7f-mceb.z4iw", "00000000-0000-0000-2EF1-F3793FCFAFA0", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.1", "1", "Emissions from fuel combustion for railway transportation occuring in the city", "Transportation", "Geographic / Territorial", null, "19717", "43", "133", "19893", "-", "Calculated diesel fuel consumption by identifying diesel train operations within city limits. Collected the number of miles of diesel commuter train routes (Amtrak and Metrolink) using Metro transportation infrastructure GIS data, then used Amtrak and Metrolink schedule data to determine how many trips per year on each route, then multiplied miles of travel by an average fuel efficiency (gallons/mile) for diesel trains." ]
+, [ "row-2dtu_cvcs.dpvm", "00000000-0000-0000-632F-A1192E61EE3B", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.1", "1", "Emissions from fuel combustion for railway transportation occuring in the city", "Transportation", "Geographic / Territorial", null, "28548", "63", "193", "28803", "-", "The railway activity within the South Coast Air Basin region (in the form of MWH of energy consumed) was converted to fuel consumption using default energy density of diesel. The fuel consumption was then downscaled to estimate the consumption within the City of LA using the ratio of train route miles within the city versus the total train route miles in the air basin boundaries. Emissions were calculated by multiplying the estimated fuel by default emission factors for diesel." ]
+, [ "row-22ei~wbhd_tdt9", "00000000-0000-0000-64A3-057EEC84D29A", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.2", "2", "Emissions from grid-supplied energy consumed in the city for railways", "Transportation", "Geographic / Territorial", null, "37480", "73", "97", "37650", "-", "Derived from the 2017 Metro Energy and Resource Report and NTD database which describes total electric rail propulsion-related emissions and energy use. Determined the amount  of emissions for Los Angles community inventory based on the percentage of total miles of MetroRail routes that occur within the city and on route trip frequency." ]
+, [ "row-kwkr~cesz_dy4a", "00000000-0000-0000-F3D8-D5DA61D2CC60", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.2", "2", "Emissions from grid-supplied energy consumed in the city for railways", "Transportation", "Geographic / Territorial", null, "-", "-", "-", "6074", "-", "Derived from the 2017 Metro Energy and Resource Report and NTD database which describes total electric rail propulsion-related emissions and energy use. Determined the amount  of emissions for Los Angles community inventory based on the percentage of total miles of MetroRail routes that occur within the city and on route trip frequency." ]
+, [ "row-fce8~kc69.2dc6", "00000000-0000-0000-98C8-80235F4D4AED", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.2", "2", "Emissions from grid-supplied energy consumed in the city for railways", "Transportation", "Geographic / Territorial", null, "1343", "1", "1", "1345", "-", "Derived from the 2017 Metro Energy and Resource Report and NTD database which describes total electric rail propulsion-related emissions and energy use. Determined the amount  of emissions for Los Angles community inventory based on the percentage of total miles of MetroRail routes that occur within the city and on route trip frequency." ]
+, [ "row-ptq8-tfu6.ayey", "00000000-0000-0000-3EA9-288E5ABD19B2", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.2", "2", "Emissions from grid-supplied energy consumed in the city for railways", "Transportation", "Geographic / Territorial", null, "220", "0", "0", "221", "-", "Derived from the 2017 Metro Energy and Resource Report and NTD database which describes total electric rail propulsion-related emissions and energy use. Determined the amount  of emissions for Los Angles community inventory based on the percentage of total miles of MetroRail routes that occur within the city and on route trip frequency." ]
+, [ "row-bwk4.hs2t_nx34", "00000000-0000-0000-05DC-FC15EF060979", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.3", "3", "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption", "Transportation", "Geographic / Territorial", null, "4610", "9", "12", "4631", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%)." ]
+, [ "row-t723.jggx_dh5c", "00000000-0000-0000-9215-BB9BD444C51E", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.3", "3", "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption", "Transportation", "Geographic / Territorial", null, "-", "-", "-", "747", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%)." ]
+, [ "row-snf2~vc3e-92dz", "00000000-0000-0000-4274-58B09306CE4D", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.3", "3", "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption", "Transportation", "Geographic / Territorial", null, "165", "0", "0", "165", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%)." ]
+, [ "row-u5uh.87ja.sxjr", "00000000-0000-0000-ACC3-D943BCC570DF", 0, 1556232684, null, 1556232684, null, "{ }", "II.2.3", "3", "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption", "Transportation", "Geographic / Territorial", null, "27", "0", "0", "27", "-", "Estimated by multiplying the electricity consumption cited above by the LADWP reported transmission and distribution loss factor average for FY 2016-17 (12.6%) and FY 2017-18 (12.0%)." ]
+, [ "row-9mzh-ek5k~vq25", "00000000-0000-0000-7072-7C040691F7AC", 0, 1556232684, null, 1556232684, null, "{ }", "II.3.1", "1", "Emissions from fuel combustion for waterborne navigation occurring in the city", "Transportation", "Geographic / Territorial", null, "-", "-", "-", "55276", "-", "The Port of Los Angeles (POLA) prepares annual emission inventories for all operations including harbor craft and ocean going  vessels.  Detailed methods are described in the POLA documents (see data sources).  Energy use for vessels is  modeled for propulsion engines, auxiliary engines, auxiliary boilers and uses and multiplies the quantity of operations (under power and at port) per vessel type by average energy use  per vessel type  per operating condition  assumptions. For use  in the community emissions inventory, all harbor craft emission were included as Scope 1 assuming the majority of HC vessel operations occur within the city limits." ]
+, [ "row-bs3a.9n49~x2g8", "00000000-0000-0000-E4E3-22DC96B1DB82", 0, 1556232684, null, 1556232684, null, "{ }", "II.3.1", "1", "Emissions from fuel combustion for waterborne navigation occurring in the city", "Transportation", "Geographic / Territorial", null, "-", "-", "-", "125784", "-", "The Port of Los Angeles (POLA) prepares annual emission inventories for all operations including harbor craft and ocean going  vessels.  Detailed methods are described in the POLA documents (see data sources).  Energy use for vessels is  modeled for propulsion engines, auxiliary engines, auxiliary boilers and uses and multiplies the quantity of operations (under power and at port) per vessel type by average energy use  per vessel type  per operating condition  assumptions. For use  in the community emissions inventory, all harbor craft emission were included as Scope 1 assuming the majority of HC vessel operations occur within the city limits." ]
+, [ "row-y3zd.a6u6.wbyi", "00000000-0000-0000-BF27-75C204FDE9F3", 0, 1556232684, null, 1556232684, null, "{ }", "II.3.3", "3", "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption", "Transportation", "Geographic / Territorial", null, "-", "-", "-", "83423", "-", "The Port of Los Angeles (POLA) prepares annual emission inventories for all operations including harbor craft and ocean going  vessels.  Detailed methods are described in the POLA documents (see data sources).  Energy use for vessels is  modeled for propulsion engines, auxiliary engines, auxiliary boilers and uses and multiplies the quantity of operations (under power and at port) per vessel type by average energy use  per vessel type  per operating condition  assumptions. For use  in the community emissions inventory, all harbor craft emission were included as Scope 1 assuming the majority of HC vessel operations occur within the city limits." ]
+, [ "row-tsny-2xkk~affc", "00000000-0000-0000-00B9-8C1598A6EE15", 0, 1556232684, null, 1556232684, null, "{ }", "II.4.1", "1", "Emissions from fuel combustion for aviation occurring in the city", "Transportation", "Geographic / Territorial", null, "986778", "1148", "2172", "990099", "-", "The AEDT model used by CDM Smith for LAWA provided the quantity of jet fuel used for landing, take-off, and idling/taxiing operations at LAX. Emission factors for jet fuel were obtained from the EPA." ]
+, [ "row-f9ac.jeq3.79fx", "00000000-0000-0000-22AE-3106880916F8", 0, 1556232684, null, 1556232684, null, "{ }", "II.4.3", "3", "Emissions from transboundary journeys occurring outside the city, and T&D losses from grid-supplied energy consumption", "Transportation", "Fuel sales approach", null, "8347266", "7571", "62408", "8417245", "-", "Scope 3  'cruise' aircraft emissions were calculated based on fuel sales records from Los Angeles World  Airport (LAWA). To estimate emissions from departing  flights, the total jet fuel consumption was multiplied by 50% assuming that half of the flights are departure and half are arrival. To avoid doubling counting with the scope 1 emisisons reported above, 50% of the 'On-Airport' aircraft fuel use  was subtracted  from the deaprture flight  fuel use estimate." ]
+, [ "row-mpyg~v2gz~5vw9", "00000000-0000-0000-D75F-1ED0ECAB0E66", 0, 1556232684, null, 1556232684, null, "{ }", "II.5.1", "1", "Emissions from fuel combustion for off-road transportation occurring in the city", "Transportation", "Geographic / Territorial", null, "2692", "76", "459", "3226", "-", "Estimates of gasoline powered off-road  vehicle and equipment emissions and energy use data was obtained from the California Air Resources Board (CARB) OffRoad2007 model. Data  for Los Angeles County were scaled  to the City of Los Angeles (community) using the proportion of population,  building permits, warehouse employment, commercial employment in the city compared to in the county." ]
+, [ "row-frcr_g487-7tfk", "00000000-0000-0000-ACAD-A3C7B3BBA1C1", 0, 1556232684, null, 1556232684, null, "{ }", "II.5.1", "1", "Emissions from fuel combustion for off-road transportation occurring in the city", "Transportation", "Geographic / Territorial", null, "144331", "270", "0", "144601", "-", "Estimates of diesel powered off-road  vehicle and equipment emissions and energy use data was obtained from the California Air Resources Board (CARB) OffRoad2007 model. Data  for Los Angeles County were scaled  to the City of Los Angeles (community) using the proportion of population,  building permits, warehouse employment, commercial employment in the city compared to in the county." ]
+, [ "row-6ufs.pmq3.ra73", "00000000-0000-0000-B372-19DDCD8AECC3", 0, 1556232684, null, 1556232684, null, "{ }", "II.5.1", "1", "Emissions from fuel combustion for off-road transportation occurring in the city", "Transportation", "Geographic / Territorial", null, "1480", "32", "0", "1512", "-", "Estimates of CNG/LPG powered off-road  vehicle and equipment emissions and energy use data was obtained from the California Air Resources Board (CARB) OffRoad2007 model. Data  for Los Angeles County were scaled  to the City of Los Angeles (community) using the proportion of population,  building permits, warehouse employment, commercial employment in the city compared to in the county." ]
+, [ "row-tiwe-cxqs-cbji", "00000000-0000-0000-564E-2DB22758442F", 0, 1556232684, null, 1556232684, null, "{ }", "III.1.2", "3", "Emissions from solid waste generated in the city but disposed in landfills or open dumps outside the city", "Waste", "Landfill sites - Methane commitment", null, "-", "-", "-", "1877742", "-", "Used methane commitment method and city-specific tonnage, state-wide waste characterization, and landfill-specific methane capture rates to calculate emissions from community's waste stream sent to landfills." ]
+, [ "row-qshb~qmfg~xgit", "00000000-0000-0000-C4FD-DF92B4258FC1", 0, 1556232684, null, 1556232684, null, "{ }", "III.2.2", "3", "Emissions from solid waste generated in the city but treated biologically outside of the city", "Waste", "Composting", null, "-", "96", "68", "165", "-", "Data on composted waste were provided directly by the City. GPC protocol emission factors for composting wet waste were applied to the quantity of waste to calculate emissions." ]
+, [ "row-phf4~wm23~ruyi", "00000000-0000-0000-F8DB-0BA070D52260", 0, 1556232684, null, 1556232684, null, "{ }", "III.3.2", "3", "Emissions from waste generated within but treated outside of the city", "Waste", "Waste incineration (4.C.2)", null, "3190", "5", "1", "3196", "-", "Estimate from the Long Beach Southeast Resource Recovery Facility (SERRF) report of annual non-biogenic emissions to the California Air Resources Board as part of the State mandatory reporting requirements for large emitters. Estimating Los Angeles contribution of emissions calculated using the percentage of LA generated waste compared sent to facility versus total waste sent to the facility." ]
+, [ "row-dvrg.s2cf-yp58", "00000000-0000-0000-49E1-B2E91CBD19C3", 0, 1556232684, null, 1556232684, null, "{ }", "III.4.1", "1", "Emissions from wastewater generated and treated within the city", "Waste", "All wastewater (4.D)", null, "-", "1137", "31968", "33106", "-", "Data on  emissions from wastewater treatment for the LADWP region obtained by first estimating emissions from the service area of the 4 treatment facilities using LGOP methodology, and then scaling it to  the portion generated by the City of Los Angeles (community) using  population as the scaling factor (3,884,340 person / 5,145,000  total persons served)" ]
+, [ "row-vabb_cpvg~859f", "00000000-0000-0000-26C0-635F54C6D45D", 0, 1556232684, null, 1556232684, null, "{ }", "III.4.3", "1", "Emissions from wastewater generated outside the city boundary but treated within the city", "Waste", "All wastewater (4.D)", null, "-", "193", "5415", "5608", "-", "Data on  emissions from wastewater treatment for the LADWP service region obtained by first estimating emissions from the service area of the 4 treatment facilities using LGOP methodology, and then scaling it to the portion of LADWP treated waste generated outside of the City of Los Angeles using  population as the scaling factor (1,260,660 persons / 5,145,000  total persons served)" ]
+, [ "row-cvqt~jjqx_7su7", "00000000-0000-0000-6AE9-14EB13B8533B", 0, 1556232684, null, 1556232684, null, "{ }", "V.3", "1", "Emissions from aggregate sources and non-CO2 emission sources on land", "Agriculture, Forestery, and Other Land Use", "Direct N2O from managed soils", null, "-", "-", "118167", "118167", "-", "Direct N2O emissions were estimated from data on wet tons of biosolids provided by LASAN. Wet tons were converted to dry tons using a solid waste concentration specific to each WWTP that produced the biosolids. Direct N2O emission factors were taken from CARB and IPCC." ]
+, [ "row-fc3w~gq6k_zveg", "00000000-0000-0000-9BA9-31B4C83A647D", 0, 1556232684, null, 1556232684, null, "{ }", "V.3", "1", "Emissions from aggregate sources and non-CO2 emission sources on land", "Agriculture, Forestery, and Other Land Use", "Indirect N2O from managed soils", null, "-", "-", "50221", "50221", "-", "Indirect N2O emissions were estimated from data on wet tons of biosolids provided by LASAN. Wet tons were converted to dry tons using a solid waste concentration specific to each WWTP that produced the biosolids. Direct N2O emission factors were taken from CARB and IPCC." ]
+ ]
+}
