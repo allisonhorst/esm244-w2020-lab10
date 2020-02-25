@@ -14,7 +14,6 @@ library(tidyverse)
 library(here)
 library(DBI)
 library(RSQLite)
-library(dbplyr)
 library(reticulate)
 ```
 
@@ -85,11 +84,19 @@ From http://www.sqlcourse.com/intro.html:
 
 Some important (+ readable, thanks Hadley Wickham) stuff: https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html
 
-#### 7. Create a new database with `dbWriteTable()`
+#### 7. But can't I just query with dplyr-type things? Yup.
+
+We'll use `dbplyr` to help us out. 
+
+From https://dbplyr.tidyverse.org/: "Note that you don’t actually need to load dbplyr with library(dbplyr); dplyr automatically loads it for you when it sees you working with a database. Database connections are coordinated by the DBI package. Learn more at http://dbi.r-dbi.org/"
+
+#### 8. Create a new database with `dbWriteTable()`
+
 
 
 ### Python code in R Markdown with `reticulate()`
 
 [`reticulate`](https://rstudio.github.io/reticulate/): "R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python >= 2.7. Integration with NumPy requires NumPy version 1.6 or higher."
 
+Note: you need to have Python >=2.7 installed on your computer (what I did: Anaconda download). The `reticulate` package **does not** bring Python along with it. Then you can follow along [here](https://rstudio.github.io/reticulate/) to get up and running with functioning Python code chunks in R Markdown. 
 
