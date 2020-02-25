@@ -1,0 +1,88 @@
+---
+title: "ESM 244 Lab 10 key"
+subtitle: "SQL and Python examples in R Markdown"
+author: "Allison Horst"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+
+library(tidyverse)
+library(here)
+library(DBI)
+library(RSQLite)
+library(dbplyr)
+library(reticulate)
+```
+
+### SQL in R Markdown with `RSQLite` package
+
+Here, we'll explore a database containing information for public San Francisco salaries (sf_salaries_database.sqlite) accessed from Kaggle at:
+https://www.kaggle.com/kaggle/sf-salaries
+
+You should have downloaded the *sf_salaries_database.sqlite* database from GauchoSpace. 
+
+1. In your project, create a subfolder of 'data' called 'sf_salaries', and drop the *sf_salaries_database.sqlite* file into it. 
+
+2. Connect to the database using `dbConnect()`:
+```{r}
+# Specify the path to the .sqlite file:
+sf_path <- here("data", "sf_salaries","sf_salaries_database.sqlite")
+
+# Then connect to the database:
+sf_db <- DBI::dbConnect(drv = RSQLite::SQLite(), dbname = sf_path)
+```
+
+From [Data Carpentry](https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html): "This command uses 2 packages that helps dbplyr and dplyr talk to the SQLite database. DBI is not something that you’ll use directly as a user. It allows R to send commands to databases irrespective of the database management system used. The RSQLite package allows R to interface with SQLite databases."
+
+OK but how do we see what it contains? `View`? What is happening here? 
+
+3. See what tables exist in the database:
+```{r}
+DBI::dbListTables(sf_db)
+
+# Or, use dbplyr::src_dbi()
+dbplyr::src_dbi(sf_db)
+```
+
+This one only has one table, "Salaries", in it (some will have multiple tables). Each table of a database usually contains one "object" (e.g. type of data). For example, we might expect if this were a broader database about public and government positions in SF we might have:
+
+- Salaries
+- Departments
+- Budgets
+
+Then *all* of those would show up here. 
+
+4. See what variables exist in "Salaries" table with `DBI::dbListFields()`:
+```{r}
+DBI::dbListFields(sf_db, "Salaries")
+```
+
+We see the name of 13 columns. OK but now I want to actually **look** at "Salaries" like a data frame that I'm used to.
+
+5. Cool! Use `DBI::dbReadTable()` to get a table:
+```{r}
+sf_df <- DBI::dbReadTable(sf_db, "Salaries")
+
+# Check the class:
+class(sf_df) # oooo a data frame!
+```
+
+Use our usual exploratory tools `View()`, `head()`, etc. to check it out!
+Great, a data frame. 
+
+Mmmmm but if things are extra giant then maybe we don't want to read in the *entire* table. Let's do some SQL querying! 
+
+6. Query a database with SQL
+
+**SQL: Structured Query Language**
+
+From http://www.sqlcourse.com/intro.html:
+"SQL (pronounced "ess-que-el") stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database."
+
+
+
+
