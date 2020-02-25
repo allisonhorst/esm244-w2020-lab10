@@ -1,5 +1,5 @@
 # ESM 244 - Lab 10
-## SQL and Python in R Markdown!
+## SQL and Python in R Markdown
 
 The goal of this lab is to demo some ways to work with other languages (SQL, Python) within the R Studio IDE we've grown to know and love. 
 
@@ -15,12 +15,10 @@ Together, we will:
 
 - `install.packages("RSQLite")`
 
-2. Download database for "Lichens and environmental data from oak tree canopies in two Piedmont Oak-Hickory Forests, NC, USA, 2013-2014" here (the SQLite Database, 27 MB option):
-
-https://knb.ecoinformatics.org/view/doi:10.5063/F1BP00QV
-
 -----------
 **WARNING: potential unnecessary frustration below.**
+
+(...but do this if you're interested in interfacing between R and Python.)
 
 Allison will also **demo** how to run some Python code in R Markdown using [`reticulate`](https://rstudio.github.io/reticulate/).
 

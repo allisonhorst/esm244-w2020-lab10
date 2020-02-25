@@ -363,20 +363,21 @@ summary {
 
 
 <h1 class="title toc-ignore">ESM 244 Lab 10 key</h1>
-<h3 class="subtitle">SQL and Python examples in R Markdown</h3>
+<h3 class="subtitle">SQL and Python in R Markdown</h3>
 <h4 class="author">Allison Horst</h4>
 
 </div>
 
 
-<div id="sql-in-r-markdown-with-rsqlite-package" class="section level3">
-<h3>SQL in R Markdown with <code>RSQLite</code> package</h3>
+<div id="sql-in-r-markdown-with-rsqlite" class="section level3">
+<h3>SQL in R Markdown with <code>RSQLite</code></h3>
 <p>Here, we’ll explore a database containing information for public San Francisco salaries (sf_salaries_database.sqlite) accessed from Kaggle at: <a href="https://www.kaggle.com/kaggle/sf-salaries" class="uri">https://www.kaggle.com/kaggle/sf-salaries</a></p>
 <p>You should have downloaded the <em>sf_salaries_database.sqlite</em> database from GauchoSpace.</p>
-<ol style="list-style-type: decimal">
-<li><p>In your project, create a subfolder of ‘data’ called ‘sf_salaries’, and drop the <em>sf_salaries_database.sqlite</em> file into it.</p></li>
-<li><p>Connect to the database using <code>dbConnect()</code>:</p></li>
-</ol>
+<div id="in-your-project-create-a-subfolder-of-data-called-sf_salaries-and-drop-the-sf_salaries_database.sqlite-file-into-it.-if-you-forkedcloned-from-github-you-dont-need-to-do-this." class="section level4">
+<h4>1. In your project, create a subfolder of ‘data’ called ‘sf_salaries’, and drop the <em>sf_salaries_database.sqlite</em> file into it. (If you forked/cloned from GitHub you don’t need to do this.)</h4>
+</div>
+<div id="connect-to-the-database-using-dbconnect" class="section level4">
+<h4>2. Connect to the database using <code>dbConnect()</code>:</h4>
 <pre class="r"><code># Specify the path to the .sqlite file:
 sf_path &lt;- here(&quot;data&quot;, &quot;sf_salaries&quot;,&quot;sf_salaries_database.sqlite&quot;)
 
@@ -384,9 +385,9 @@ sf_path &lt;- here(&quot;data&quot;, &quot;sf_salaries&quot;,&quot;sf_salaries_d
 sf_db &lt;- DBI::dbConnect(drv = RSQLite::SQLite(), dbname = sf_path)</code></pre>
 <p>From <a href="https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html">Data Carpentry</a>: “This command uses 2 packages that helps dbplyr and dplyr talk to the SQLite database. DBI is not something that you’ll use directly as a user. It allows R to send commands to databases irrespective of the database management system used. The RSQLite package allows R to interface with SQLite databases.”</p>
 <p>OK but how do we see what it contains? <code>View</code>? What is happening here?</p>
-<ol start="3" style="list-style-type: decimal">
-<li>See what tables exist in the database:</li>
-</ol>
+</div>
+<div id="see-what-tables-exist-in-the-database" class="section level4">
+<h4>3. See what tables exist in the database:</h4>
 <pre class="r"><code>DBI::dbListTables(sf_db)</code></pre>
 <pre><code>## [1] &quot;Salaries&quot;</code></pre>
 <pre class="r"><code># Or, use dbplyr::src_dbi()
@@ -400,18 +401,18 @@ dbplyr::src_dbi(sf_db)</code></pre>
 <li>Budgets</li>
 </ul>
 <p>Then <em>all</em> of those would show up here.</p>
-<ol start="4" style="list-style-type: decimal">
-<li>See what variables exist in “Salaries” table with <code>DBI::dbListFields()</code>:</li>
-</ol>
+</div>
+<div id="see-what-variables-exist-in-salaries-table-with-dbidblistfields" class="section level4">
+<h4>4. See what variables exist in “Salaries” table with <code>DBI::dbListFields()</code>:</h4>
 <pre class="r"><code>DBI::dbListFields(sf_db, &quot;Salaries&quot;)</code></pre>
 <pre><code>##  [1] &quot;Id&quot;               &quot;EmployeeName&quot;     &quot;JobTitle&quot;         &quot;BasePay&quot;         
 ##  [5] &quot;OvertimePay&quot;      &quot;OtherPay&quot;         &quot;Benefits&quot;         &quot;TotalPay&quot;        
 ##  [9] &quot;TotalPayBenefits&quot; &quot;Year&quot;             &quot;Notes&quot;            &quot;Agency&quot;          
 ## [13] &quot;Status&quot;</code></pre>
 <p>We see the name of 13 columns. OK but now I want to actually <strong>look</strong> at “Salaries” like a data frame that I’m used to.</p>
-<ol start="5" style="list-style-type: decimal">
-<li>Cool! Use <code>DBI::dbReadTable()</code> to get a table:</li>
-</ol>
+</div>
+<div id="cool-use-dbidbreadtable-to-get-a-table" class="section level4">
+<h4>5. Cool! Use <code>DBI::dbReadTable()</code> to get a table:</h4>
 <pre class="r"><code>sf_df &lt;- DBI::dbReadTable(sf_db, &quot;Salaries&quot;)
 
 # Check the class:
@@ -419,11 +420,20 @@ class(sf_df) # oooo a data frame!</code></pre>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>Use our usual exploratory tools <code>View()</code>, <code>head()</code>, etc. to check it out! Great, a data frame.</p>
 <p>Mmmmm but if things are extra giant then maybe we don’t want to read in the <em>entire</em> table. Let’s do some SQL querying!</p>
-<ol start="6" style="list-style-type: decimal">
-<li>Query a database with SQL</li>
-</ol>
+</div>
+<div id="query-a-database-with-sql" class="section level4">
+<h4>6. Query a database with SQL</h4>
 <p><strong>SQL: Structured Query Language</strong></p>
 <p>From <a href="http://www.sqlcourse.com/intro.html" class="uri">http://www.sqlcourse.com/intro.html</a>: “SQL (pronounced”ess-que-el“) stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database.”</p>
+<p>Some important (+ readable, thanks Hadley Wickham) stuff: <a href="https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html" class="uri">https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html</a></p>
+</div>
+<div id="create-a-new-database-with-dbwritetable" class="section level4">
+<h4>7. Create a new database with <code>dbWriteTable()</code></h4>
+</div>
+</div>
+<div id="python-code-in-r-markdown-with-reticulate" class="section level3">
+<h3>Python code in R Markdown with <code>reticulate()</code></h3>
+<p><a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a>: “R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python &gt;= 2.7. Integration with NumPy requires NumPy version 1.6 or higher.”</p>
 </div>
 
 

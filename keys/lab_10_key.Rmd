@@ -1,6 +1,6 @@
 ---
 title: "ESM 244 Lab 10 key"
-subtitle: "SQL and Python examples in R Markdown"
+subtitle: "SQL and Python in R Markdown"
 author: "Allison Horst"
 output: html_document
 ---
@@ -18,16 +18,16 @@ library(dbplyr)
 library(reticulate)
 ```
 
-### SQL in R Markdown with `RSQLite` package
+### SQL in R Markdown with `RSQLite`
 
 Here, we'll explore a database containing information for public San Francisco salaries (sf_salaries_database.sqlite) accessed from Kaggle at:
 https://www.kaggle.com/kaggle/sf-salaries
 
 You should have downloaded the *sf_salaries_database.sqlite* database from GauchoSpace. 
 
-1. In your project, create a subfolder of 'data' called 'sf_salaries', and drop the *sf_salaries_database.sqlite* file into it. 
+#### 1. In your project, create a subfolder of 'data' called 'sf_salaries', and drop the *sf_salaries_database.sqlite* file into it. (If you forked/cloned from GitHub you don't need to do this.)
 
-2. Connect to the database using `dbConnect()`:
+#### 2. Connect to the database using `dbConnect()`:
 ```{r}
 # Specify the path to the .sqlite file:
 sf_path <- here("data", "sf_salaries","sf_salaries_database.sqlite")
@@ -40,7 +40,7 @@ From [Data Carpentry](https://datacarpentry.org/R-ecology-lesson/05-r-and-databa
 
 OK but how do we see what it contains? `View`? What is happening here? 
 
-3. See what tables exist in the database:
+#### 3. See what tables exist in the database:
 ```{r}
 DBI::dbListTables(sf_db)
 
@@ -56,14 +56,14 @@ This one only has one table, "Salaries", in it (some will have multiple tables).
 
 Then *all* of those would show up here. 
 
-4. See what variables exist in "Salaries" table with `DBI::dbListFields()`:
+#### 4. See what variables exist in "Salaries" table with `DBI::dbListFields()`:
 ```{r}
 DBI::dbListFields(sf_db, "Salaries")
 ```
 
 We see the name of 13 columns. OK but now I want to actually **look** at "Salaries" like a data frame that I'm used to.
 
-5. Cool! Use `DBI::dbReadTable()` to get a table:
+#### 5. Cool! Use `DBI::dbReadTable()` to get a table:
 ```{r}
 sf_df <- DBI::dbReadTable(sf_db, "Salaries")
 
@@ -76,13 +76,20 @@ Great, a data frame.
 
 Mmmmm but if things are extra giant then maybe we don't want to read in the *entire* table. Let's do some SQL querying! 
 
-6. Query a database with SQL
+#### 6. Query a database with SQL
 
 **SQL: Structured Query Language**
 
 From http://www.sqlcourse.com/intro.html:
 "SQL (pronounced "ess-que-el") stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database."
 
+Some important (+ readable, thanks Hadley Wickham) stuff: https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html
 
+#### 7. Create a new database with `dbWriteTable()`
+
+
+### Python code in R Markdown with `reticulate()`
+
+[`reticulate`](https://rstudio.github.io/reticulate/): "R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python >= 2.7. Integration with NumPy requires NumPy version 1.6 or higher."
 
 
