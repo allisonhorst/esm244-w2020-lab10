@@ -363,92 +363,561 @@ summary {
 
 
 <h1 class="title toc-ignore">ESM 244 Lab 10 - building versatility</h1>
-<h3 class="subtitle">JSONs, databases, SQL and Python in R Markdown</h3>
+<h3 class="subtitle">SQL and Python in R</h3>
 <h4 class="author">Allison Horst</h4>
 
 </div>
 
 
-<div id="a.-working-with-jsons-in-r-markdown" class="section level3">
-<h3>A. Working with JSONs in R Markdown</h3>
+<div id="sql-in-r-markdown-with-dbi-and-rsqlite" class="section level2">
+<h2>1. SQL in R Markdown with <code>DBI</code> and <code>RSQLite</code></h2>
+<p>Here, we’ll explore and query a database containing information on fish, invertebrates, and lobsters from the Santa Barbara Coastal Long Term Ecological Research Program.</p>
+<div id="data" class="section level4">
+<h4>Data:</h4>
+<p>Fish data:</p>
 <ul>
-<li>JSON: JavaScript Object Notation</li>
-<li>Machine + human readable data</li>
+<li>Description: Reef fish abundance, SB coast</li>
+<li>Link: <a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17&amp;revision=newest" class="uri">https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17&amp;revision=newest</a></li>
+<li>Citation: Reed D. 2018. SBC LTER: Reef: Kelp Forest Community Dynamics: Fish abundance. Environmental Data Initiative. doi.</li>
 </ul>
-<p>Maybe the hardest part: <strong>How do I pronounce that?</strong> (Jay-Sawn, Jason, J-S-O-N?) Answer: <strong>It doesn’t matter</strong> (according to <a href="https://www.youtube.com/watch?v=zhVdWQWKRqM">Douglas Crockford</a>, and he should know…).</p>
-<p>We’ll use <a href="https://data.lacity.org/api/views/kkrh-b4e3/rows.json?accessType=DOWNLOAD">this JSON data</a> for community GHG emissions (LA), already added in <code>data/la_ghg.json</code>. <a href="https://catalog.data.gov/harvest/object/e909b39d-0671-4fa5-ae43-ddee8ebbd776">Click here</a> for metadata.</p>
+<div id="invertebrate-data" class="section level5">
+<h5>Invertebrate data:</h5>
+<ul>
+<li>Description: Invertebrate counts, SB coast</li>
+<li>Link: <a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19&amp;revision=newest" class="uri">https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19&amp;revision=newest</a></li>
+<li>Citation: Reed D. 2018. SBC LTER: Reef: Kelp Forest Community Dynamics: Invertebrate and algal density. Environmental Data Initiative. doi.</li>
+</ul>
 </div>
-<div id="b.-sql-in-r-markdown-with-rsqlite" class="section level3">
-<h3>B. SQL in R Markdown with <code>RSQLite</code></h3>
-<p>Here, we’ll explore a database containing information for public San Francisco salaries (sf_salaries_database.sqlite) accessed from Kaggle at: <a href="https://www.kaggle.com/kaggle/sf-salaries" class="uri">https://www.kaggle.com/kaggle/sf-salaries</a></p>
-<p>You should have downloaded the <em>sf_salaries_database.sqlite</em> database from GauchoSpace.</p>
-<div id="in-your-project-create-a-subfolder-of-data-called-sf_salaries-and-drop-the-sf_salaries_database.sqlite-file-into-it.-if-you-forkedcloned-from-github-you-dont-need-to-do-this." class="section level4">
-<h4>1. In your project, create a subfolder of ‘data’ called ‘sf_salaries’, and drop the <em>sf_salaries_database.sqlite</em> file into it. (If you forked/cloned from GitHub you don’t need to do this.)</h4>
+<div id="lobster-data" class="section level5">
+<h5>Lobster data:</h5>
+<ul>
+<li>Description: Lobster size, abundance and fishing pressure (SB coast)</li>
+<li>Link: <a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=77&amp;revision=newest" class="uri">https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=77&amp;revision=newest</a></li>
+<li>Citation: Reed D. 2019. SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012. Environmental Data Initiative. doi.</li>
+</ul>
+<p>You should have the <code>marine.sqlite</code> in the <code>data</code> folder of your project.</p>
 </div>
-<div id="connect-to-the-database-using-dbconnect" class="section level4">
-<h4>2. Connect to the database using <code>dbConnect()</code>:</h4>
-<pre class="r"><code># Specify the path to the .sqlite file:
-sf_path &lt;- here(&quot;data&quot;, &quot;sf_salaries&quot;,&quot;sf_salaries_database.sqlite&quot;)
-
-# Then connect to the database:
-sf_db &lt;- DBI::dbConnect(drv = RSQLite::SQLite(), dbname = sf_path)</code></pre>
+</div>
+<div id="a.-connect-to-the-database-using-dbconnect" class="section level4">
+<h4>a. Connect to the database using <code>dbConnect()</code>:</h4>
+<pre class="r"><code># Then connect to the database:
+lter_db &lt;- DBI::dbConnect(drv = RSQLite::SQLite(), 
+                          dbname = here(&quot;data&quot;, &quot;marine.sqlite&quot;))</code></pre>
 <p>From <a href="https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html">Data Carpentry</a>: “This command uses 2 packages that helps dbplyr and dplyr talk to the SQLite database. DBI is not something that you’ll use directly as a user. It allows R to send commands to databases irrespective of the database management system used. The RSQLite package allows R to interface with SQLite databases.”</p>
 <p>OK but how do we see what it contains? <code>View</code>? What is happening here?</p>
 </div>
-<div id="see-what-tables-exist-in-the-database" class="section level4">
-<h4>3. See what tables exist in the database:</h4>
-<pre class="r"><code>DBI::dbListTables(sf_db)</code></pre>
-<pre><code>## [1] &quot;Salaries&quot;</code></pre>
-<pre class="r"><code># Or, use dbplyr::src_dbi()
-dbplyr::src_dbi(sf_db)</code></pre>
-<pre><code>## src:  sqlite 3.29.0 [/Users/ahorst/github/esm244-w2020-lab10/data/sf_salaries/sf_salaries_database.sqlite]
-## tbls: Salaries</code></pre>
-<p>This one only has one table, “Salaries”, in it (some will have multiple tables). Each table of a database usually contains one “object” (e.g. type of data). For example, we might expect if this were a broader database about public and government positions in SF we might have:</p>
-<ul>
-<li>Salaries</li>
-<li>Departments</li>
-<li>Budgets</li>
-</ul>
-<p>Then <em>all</em> of those would show up here.</p>
+<div id="b.-see-what-tables-exist-in-the-database" class="section level4">
+<h4>b. See what tables exist in the database:</h4>
+<pre class="r"><code>DBI::dbListTables(lter_db)</code></pre>
+<pre><code>## [1] &quot;fish_data&quot;     &quot;inverts_data&quot;  &quot;lobsters_data&quot;</code></pre>
+<p>So, this relational database contains 3 tables, named fish_data, inverts_data, and lobsters_data.</p>
 </div>
-<div id="see-what-variables-exist-in-salaries-table-with-dbidblistfields" class="section level4">
-<h4>4. See what variables exist in “Salaries” table with <code>DBI::dbListFields()</code>:</h4>
-<pre class="r"><code>DBI::dbListFields(sf_db, &quot;Salaries&quot;)</code></pre>
-<pre><code>##  [1] &quot;Id&quot;               &quot;EmployeeName&quot;     &quot;JobTitle&quot;         &quot;BasePay&quot;         
-##  [5] &quot;OvertimePay&quot;      &quot;OtherPay&quot;         &quot;Benefits&quot;         &quot;TotalPay&quot;        
-##  [9] &quot;TotalPayBenefits&quot; &quot;Year&quot;             &quot;Notes&quot;            &quot;Agency&quot;          
-## [13] &quot;Status&quot;</code></pre>
-<p>We see the name of 13 columns. OK but now I want to actually <strong>look</strong> at “Salaries” like a data frame that I’m used to.</p>
+<div id="c.-see-what-variables-exist-in-the-table-with-dbidblistfields" class="section level4">
+<h4>c. See what variables exist in the table with <code>DBI::dbListFields()</code>:</h4>
+<pre class="r"><code>DBI::dbListFields(lter_db, &quot;fish_data&quot;)</code></pre>
+<pre><code>## [1] &quot;year&quot;        &quot;site&quot;        &quot;common_name&quot; &quot;total_count&quot;</code></pre>
+<p>Your turn: what variables exist in the inverts_data and lobsters_data tables?</p>
 </div>
-<div id="cool-use-dbidbreadtable-to-get-a-table" class="section level4">
-<h4>5. Cool! Use <code>DBI::dbReadTable()</code> to get a table:</h4>
-<pre class="r"><code>sf_df &lt;- DBI::dbReadTable(sf_db, &quot;Salaries&quot;)
+<div id="d.-cool-use-dbidbreadtable-to-get-a-table" class="section level4">
+<h4>d. Cool! Use <code>DBI::dbReadTable()</code> to get a table:</h4>
+<pre class="r"><code>fish_df &lt;- DBI::dbReadTable(lter_db, &quot;fish_data&quot;)
 
 # Check the class:
-class(sf_df) # oooo a data frame!</code></pre>
+class(fish_df) # oooo a data frame!</code></pre>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>Use our usual exploratory tools <code>View()</code>, <code>head()</code>, etc. to check it out! Great, a data frame.</p>
 <p>Mmmmm but if things are extra giant then maybe we don’t want to read in the <em>entire</em> table. Let’s do some SQL querying!</p>
 </div>
-<div id="query-a-database-with-sql" class="section level4">
-<h4>6. Query a database with SQL</h4>
+<div id="e.-query-a-database-with-sql" class="section level4">
+<h4>e. Query a database with SQL</h4>
 <p><strong>SQL: Structured Query Language</strong></p>
 <p>From <a href="http://www.sqlcourse.com/intro.html" class="uri">http://www.sqlcourse.com/intro.html</a>: “SQL (pronounced”ess-que-el“) stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database.”</p>
 <p>Some important (+ readable, thanks Hadley Wickham) stuff: <a href="https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html" class="uri">https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html</a></p>
+<p>To work in SQL within R Markdown, we have options. First, we can insert a SQL code chunk (instead of a normal R code chunk, which expects R language).</p>
+<p>Use Insert &gt; SQL to create one, and your new code chunk should have the header <code>{sql connection= }</code>. Add the name of the database connection you created above (in our case, that will be <code>sql connection=fish_db</code> within the code chunk header).</p>
+<p>We will use:</p>
+<ul>
+<li><code>SELECT</code> to get rows</li>
+<li><code>FROM</code> a table</li>
+<li>Specifying a subset of variables (columns), or <code>*</code> to get all columns</li>
+</ul>
+<pre class="sql"><code>SELECT * FROM fish_data</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">site</th>
+<th align="left">common_name</th>
+<th align="right">total_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">black surfperch</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">blacksmith</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">rock wrasse</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">senorita</td>
+<td align="right">58</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">black surfperch</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">blacksmith</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">rock wrasse</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">senorita</td>
+<td align="right">57</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="but-cant-i-just-query-with-dplyr-type-things-yup." class="section level4">
-<h4>7. But can’t I just query with dplyr-type things? Yup.</h4>
-<p>We’ll use <code>dbplyr</code> to help us out.</p>
+<p><strong>Note</strong>: If you have a bunch of SQL code chunks, you might want to set up a connection in the R setup code chunk at the top of the .Rmd. Ours would look like:</p>
+<pre class="r"><code>lter_db &lt;- dbConnect(RSQLite::SQLite(), dbname = &quot;marine.sqlite&quot;)
+knitr::opts_chunk$set(connection = &quot;lter_db&quot;)</code></pre>
+<p>Now let’s just get a few of the columns:</p>
+<pre class="sql"><code>SELECT year, total_count, site FROM fish_data</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="right">total_count</th>
+<th align="left">site</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="right">2</td>
+<td align="left">abur</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="right">1</td>
+<td align="left">abur</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="right">1</td>
+<td align="left">abur</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="right">2</td>
+<td align="left">abur</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="right">58</td>
+<td align="left">abur</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="right">1</td>
+<td align="left">aque</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="right">1</td>
+<td align="left">aque</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="right">1</td>
+<td align="left">aque</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="right">1</td>
+<td align="left">aque</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="right">57</td>
+<td align="left">aque</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Let’s think about the patterns here:</p>
+<ul>
+<li>The CAPITAL WORDS are like our functions (but actually these aren’t case sensitive…I just like the delineation)</li>
+<li>The words between them are like arguments</li>
+</ul>
+<p>What if we only want to get observations from the <strong>fish_data</strong> table where the year is 2016? Use <code>WHERE</code> to set conditions on what to keep:</p>
+<pre class="sql"><code>SELECT * FROM fish_data WHERE year == 2016</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">site</th>
+<th align="left">common_name</th>
+<th align="right">total_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">black surfperch</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">blacksmith</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">rock wrasse</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">senorita</td>
+<td align="right">58</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">black surfperch</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">blacksmith</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">rock wrasse</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">senorita</td>
+<td align="right">57</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So what is the parallel function that we’ve used in R to do the same thing? Yep, dplyr::filter() allows us to conditionally subset by rows!</p>
+<p>We can similarly look for conditional matches on strings (e.g. “garibaldi”):</p>
+<pre class="sql"><code>SELECT * FROM fish_data WHERE common_name == &quot;garibaldi&quot;</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>9 records</caption>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">site</th>
+<th align="left">common_name</th>
+<th align="right">total_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">aque</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">mohk</td>
+<td align="left">garibaldi</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2017</td>
+<td align="left">abur</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2017</td>
+<td align="left">aque</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2017</td>
+<td align="left">mohk</td>
+<td align="left">garibaldi</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">2018</td>
+<td align="left">abur</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2018</td>
+<td align="left">aque</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2018</td>
+<td align="left">mohk</td>
+<td align="left">garibaldi</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>What about an <strong>and</strong> statement (we use a comma or ampersand in a <code>dplyr::filter()</code> function):</p>
+<pre class="sql"><code>SELECT * FROM fish_data WHERE common_name == &quot;garibaldi&quot; and site == &quot;mohk&quot;</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>3 records</caption>
+<thead>
+<tr class="header">
+<th align="left">year</th>
+<th align="left">site</th>
+<th align="left">common_name</th>
+<th align="right">total_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2016</td>
+<td align="left">mohk</td>
+<td align="left">garibaldi</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">2017</td>
+<td align="left">mohk</td>
+<td align="left">garibaldi</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">2018</td>
+<td align="left">mohk</td>
+<td align="left">garibaldi</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>An <strong>or</strong> statement: Keep rows where the year is 2017 <strong>OR</strong> the site is “abur”</p>
+<pre class="sql"><code>SELECT * FROM fish_data WHERE year == 2017 or site == &quot;abur&quot;</code></pre>
+<div class="knitsql-table">
+<table>
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">site</th>
+<th align="left">common_name</th>
+<th align="right">total_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">black surfperch</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">blacksmith</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">rock wrasse</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">abur</td>
+<td align="left">senorita</td>
+<td align="right">58</td>
+</tr>
+<tr class="even">
+<td align="right">2017</td>
+<td align="left">abur</td>
+<td align="left">black surfperch</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">2017</td>
+<td align="left">abur</td>
+<td align="left">blacksmith</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2017</td>
+<td align="left">abur</td>
+<td align="left">garibaldi</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">2017</td>
+<td align="left">abur</td>
+<td align="left">rock wrasse</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="right">2017</td>
+<td align="left">abur</td>
+<td align="left">senorita</td>
+<td align="right">64</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If we want to store the output of SQL querying as a data frame, add <code>output.var = &quot;df_name&quot;</code> to the code chunk header!</p>
+<pre class="sql"><code>SELECT * FROM fish_data WHERE year == 2017</code></pre>
+<p>Then check the class of fish_2017_df:</p>
+<pre class="r"><code># class(fish_2017_df) # A data frame wooo! </code></pre>
+<p>And you actually don’t <strong>HAVE</strong> to do this in SQL code chunks…you can use <code>DBI::dbSendQuery</code> in an R code chunk to do the same thing!</p>
+<pre class="r"><code># Now I'm in an R code chunk, querying with SQL!
+garibaldi &lt;- dbSendQuery(lter_db, 
+                         &quot;SELECT * FROM fish_data WHERE common_name == 'garibaldi'&quot;)
+
+# And see what it contains (coerce to a data.frame):
+gar_df &lt;- dbFetch(garibaldi)</code></pre>
+</div>
+<div id="f.-dbplyr-for-dplyr-like-querying" class="section level4">
+<h4>f. <code>dbplyr</code> for <code>dplyr</code>-like querying!</h4>
+<p>Let’s say we want to do something with a database table, but we really enjoy working with <code>dplyr</code> type syntax instead. We’ll use <code>dbplyr</code> to help us out.</p>
 <p>From <a href="https://dbplyr.tidyverse.org/" class="uri">https://dbplyr.tidyverse.org/</a>: “Note that you don’t actually need to load dbplyr with library(dbplyr); dplyr automatically loads it for you when it sees you working with a database. Database connections are coordinated by the DBI package. Learn more at <a href="http://dbi.r-dbi.org/" class="uri">http://dbi.r-dbi.org/</a>”</p>
+<pre class="r"><code># Convert to a SQL table:
+fish_tbl &lt;- tbl(lter_db, &quot;fish_data&quot;)
+
+# Do some wrangling in dplyr format: 
+yearly_fish &lt;- fish_tbl %&gt;% 
+  group_by(year) %&gt;% 
+  summarize(
+    total_fish = sum(total_count)
+  )
+
+# See query:
+yearly_fish %&gt;% show_query() # This will show us what the SQL commands would look like! So cool! </code></pre>
+<pre><code>## &lt;SQL&gt;
+## SELECT `year`, SUM(`total_count`) AS `total_fish`
+## FROM `fish_data`
+## GROUP BY `year`</code></pre>
+<pre class="r"><code># Actually run the query by passing it to collect(): 
+yearly_fish %&gt;% collect()</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##    year total_fish
+##   &lt;dbl&gt;      &lt;dbl&gt;
+## 1  2016        150
+## 2  2017        231
+## 3  2018        130</code></pre>
+<pre class="r"><code># Then you don't even need to WRITE any SQL code! Thanks dbplyr!</code></pre>
 </div>
-<div id="create-a-new-database-with-dbwritetable" class="section level4">
-<h4>8. Create a new database with <code>dbWriteTable()</code></h4>
-</div>
+<div id="g.-adding-removing-tables-in-a-.sqlite-database" class="section level4">
+<h4>g. Adding / removing tables in a .sqlite database</h4>
+<p>What if we want to add a table (e.g. from a data frame or CSV) to an existing database?</p>
+<p>Use <code>dbWriteTable</code> to add a new table to an existing database. For example, let’s add the <code>mtcars</code> dataset to our database, then remove it:</p>
+<pre class="r"><code># View(mtcars)
+
+# Write the table to our database:
+dbWriteTable(lter_db, &quot;mtcars_df&quot;, mtcars)
+
+# Check to see that it's there: 
+DBI::dbListTables(lter_db) # Yup. </code></pre>
+<pre><code>## [1] &quot;fish_data&quot;     &quot;inverts_data&quot;  &quot;lobsters_data&quot; &quot;mtcars_df&quot;</code></pre>
+<pre class="r"><code># And we can remove it just as easily: 
+DBI::dbRemoveTable(lter_db, &quot;mtcars_df&quot;)
+
+# Now check: 
+DBI::dbListTables(lter_db) # Back to the 3 we started with! </code></pre>
+<pre><code>## [1] &quot;fish_data&quot;     &quot;inverts_data&quot;  &quot;lobsters_data&quot;</code></pre>
 </div>
 <div id="c.-python-code-in-r-markdown-with-reticulate" class="section level3">
 <h3>C. Python code in R Markdown with <code>reticulate()</code></h3>
 <p><a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a>: “R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python &gt;= 2.7. Integration with NumPy requires NumPy version 1.6 or higher.”</p>
 <p>Note: you need to have Python &gt;=2.7 installed on your computer (what I did: Anaconda download). The <code>reticulate</code> package <strong>does not</strong> bring Python along with it. Then you can follow along <a href="https://rstudio.github.io/reticulate/">here</a> to get up and running with functioning Python code chunks in R Markdown.</p>
+</div>
 </div>
 
 

@@ -1,6 +1,6 @@
 ---
 title: "ESM 244 Lab 10 - building versatility"
-subtitle: "JSONs, databases, SQL and Python in R Markdown"
+subtitle: "SQL and Python in R"
 author: "Allison Horst"
 output: html_document
 ---
@@ -10,74 +10,76 @@ knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
                       message = FALSE)
 
+# Packages needed: 
 library(tidyverse)
 library(here)
+library(janitor)
+
+# For working with SQLite databases: 
 library(DBI)
 library(RSQLite)
+
+# For interfacing between R and Python:
 library(reticulate)
 ```
 
-### A. Working with JSONs in R Markdown
+## 1. SQL in R Markdown with `DBI` and `RSQLite`
 
-- JSON: JavaScript Object Notation
-- Machine + human readable data 
+Here, we'll explore and query a database containing information on fish, invertebrates, and lobsters from the Santa Barbara Coastal Long Term Ecological Research Program. 
 
-Maybe the hardest part: **How do I pronounce that?** (Jay-Sawn, Jason, J-S-O-N?) 
-Answer: **It doesn't matter** (according to [Douglas Crockford](https://www.youtube.com/watch?v=zhVdWQWKRqM), and he should know...).
+#### Data:
 
-We'll use [this JSON data](https://data.lacity.org/api/views/kkrh-b4e3/rows.json?accessType=DOWNLOAD) for community GHG emissions (LA), already added in `data/la_ghg.json`. [Click here](https://catalog.data.gov/harvest/object/e909b39d-0671-4fa5-ae43-ddee8ebbd776) for metadata. 
+Fish data: 
 
-### B. SQL in R Markdown with `RSQLite`
+- Description: Reef fish abundance, SB coast
+- Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=17&revision=newest
+- Citation: Reed D. 2018. SBC LTER: Reef: Kelp Forest Community Dynamics: Fish abundance. Environmental Data Initiative. doi.
 
-Here, we'll explore a database containing information for public San Francisco salaries (sf_salaries_database.sqlite) accessed from Kaggle at:
-https://www.kaggle.com/kaggle/sf-salaries
+##### Invertebrate data:
 
-You should have downloaded the *sf_salaries_database.sqlite* database from GauchoSpace. 
+- Description: Invertebrate counts, SB coast
+- Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=19&revision=newest
+- Citation: Reed D. 2018. SBC LTER: Reef: Kelp Forest Community Dynamics: Invertebrate and algal density. Environmental Data Initiative. doi.
 
-#### 1. In your project, create a subfolder of 'data' called 'sf_salaries', and drop the *sf_salaries_database.sqlite* file into it. (If you forked/cloned from GitHub you don't need to do this.)
+##### Lobster data: 
 
-#### 2. Connect to the database using `dbConnect()`:
+- Description: Lobster size, abundance and fishing pressure (SB coast)
+- Link: https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&identifier=77&revision=newest
+- Citation: Reed D. 2019. SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012. Environmental Data Initiative. doi.
+
+You should have the `marine.sqlite` in the `data` folder of your project. 
+
+#### a. Connect to the database using `dbConnect()`:
 ```{r}
-# Specify the path to the .sqlite file:
-sf_path <- here("data", "sf_salaries","sf_salaries_database.sqlite")
-
 # Then connect to the database:
-sf_db <- DBI::dbConnect(drv = RSQLite::SQLite(), dbname = sf_path)
+lter_db <- DBI::dbConnect(drv = RSQLite::SQLite(), 
+                          dbname = here("data", "marine.sqlite"))
 ```
 
 From [Data Carpentry](https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html): "This command uses 2 packages that helps dbplyr and dplyr talk to the SQLite database. DBI is not something that you’ll use directly as a user. It allows R to send commands to databases irrespective of the database management system used. The RSQLite package allows R to interface with SQLite databases."
 
 OK but how do we see what it contains? `View`? What is happening here? 
 
-#### 3. See what tables exist in the database:
+#### b. See what tables exist in the database:
 ```{r}
-DBI::dbListTables(sf_db)
-
-# Or, use dbplyr::src_dbi()
-dbplyr::src_dbi(sf_db)
+DBI::dbListTables(lter_db)
 ```
 
-This one only has one table, "Salaries", in it (some will have multiple tables). Each table of a database usually contains one "object" (e.g. type of data). For example, we might expect if this were a broader database about public and government positions in SF we might have:
+So, this relational database contains 3 tables, named fish_data, inverts_data, and lobsters_data. 
 
-- Salaries
-- Departments
-- Budgets
-
-Then *all* of those would show up here. 
-
-#### 4. See what variables exist in "Salaries" table with `DBI::dbListFields()`:
+#### c. See what variables exist in the table with `DBI::dbListFields()`:
 ```{r}
-DBI::dbListFields(sf_db, "Salaries")
+DBI::dbListFields(lter_db, "fish_data")
 ```
 
-We see the name of 13 columns. OK but now I want to actually **look** at "Salaries" like a data frame that I'm used to.
+Your turn: what variables exist in the inverts_data and lobsters_data tables?
 
-#### 5. Cool! Use `DBI::dbReadTable()` to get a table:
+#### d. Cool! Use `DBI::dbReadTable()` to get a table as a data frame:
 ```{r}
-sf_df <- DBI::dbReadTable(sf_db, "Salaries")
+fish_df <- DBI::dbReadTable(lter_db, "fish_data")
 
 # Check the class:
-class(sf_df) # oooo a data frame!
+class(fish_df) # oooo a data frame!
 ```
 
 Use our usual exploratory tools `View()`, `head()`, etc. to check it out!
@@ -85,7 +87,7 @@ Great, a data frame.
 
 Mmmmm but if things are extra giant then maybe we don't want to read in the *entire* table. Let's do some SQL querying! 
 
-#### 6. Query a database with SQL
+#### e. Query a database with SQL
 
 **SQL: Structured Query Language**
 
@@ -94,15 +96,129 @@ From http://www.sqlcourse.com/intro.html:
 
 Some important (+ readable, thanks Hadley Wickham) stuff: https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html
 
-#### 7. But can't I just query with dplyr-type things? Yup.
+To work in SQL within R Markdown, we have options. First, we can insert a SQL code chunk (instead of a normal R code chunk, which expects R language). 
 
-We'll use `dbplyr` to help us out. 
+Use Insert > SQL to create one, and your new code chunk should have the header `{sql connection= }`. Add the name of the database connection you created above (in our case, that will be `sql connection=fish_db` within the code chunk header).
+
+We will use: 
+
+- `SELECT` to get rows 
+- `FROM` a table 
+- Specifying a subset of variables (columns), or `*` to get all columns
+
+```{sql connection=lter_db}
+SELECT * FROM fish_data
+```
+
+**Note**: If you have a bunch of SQL code chunks, you might want to set up a connection in the R setup code chunk at the top of the .Rmd. Ours would look like: 
+```{r, eval = FALSE}
+lter_db <- dbConnect(RSQLite::SQLite(), dbname = "marine.sqlite")
+knitr::opts_chunk$set(connection = "lter_db")
+```
+
+Now let's just get a few of the columns:
+```{sql connection=lter_db}
+SELECT year, total_count, site FROM fish_data
+```
+Let's think about the patterns here:
+
+- The CAPITAL WORDS are like our functions (but actually these aren't case sensitive...I just like the delineation)
+- The words between them are like arguments
+
+What if we only want to get observations from the **fish_data** table where the year is 2016? Use `WHERE` to set conditions on what to keep:  
+```{sql connection=lter_db}
+SELECT * FROM fish_data WHERE year == 2016
+```
+
+So what is the parallel function that we've used in R to do the same thing? Yep, dplyr::filter() allows us to conditionally subset by rows! 
+
+We can similarly look for conditional matches on strings (e.g. "garibaldi"):
+```{sql connection=lter_db}
+SELECT * FROM fish_data WHERE common_name == "garibaldi"
+```
+
+What about an **and** statement (we use a comma or ampersand in a `dplyr::filter()` function): 
+```{sql connection=lter_db}
+SELECT * FROM fish_data WHERE common_name == "garibaldi" and site == "mohk"
+```
+
+An **or** statement: 
+Keep rows where the year is 2017 **OR** the site is "abur"
+```{sql connection=lter_db}
+SELECT * FROM fish_data WHERE year == 2017 or site == "abur"
+```
+
+If we want to store the output of SQL querying as a data frame, add `output.var = "df_name"` to the code chunk header! 
+```{sql connection=lter_db, output.var = "fish_2017_df"}
+SELECT * FROM fish_data WHERE year == 2017
+```
+
+Then check the class of fish_2017_df:
+```{r}
+# class(fish_2017_df) # A data frame wooo! 
+```
+
+And you actually don't **HAVE** to do this in SQL code chunks...you can use `DBI::dbSendQuery` in an R code chunk to do the same thing!
+
+```{r}
+# Now I'm in an R code chunk, querying with SQL!
+garibaldi <- dbSendQuery(lter_db, 
+                         "SELECT * FROM fish_data WHERE common_name == 'garibaldi'")
+
+# And see what it contains (coerce to a data.frame):
+gar_df <- dbFetch(garibaldi)
+
+```
+
+#### f. `dbplyr` for `dplyr`-like querying!
+
+Let's say we want to do something with a database table, but we really enjoy working with `dplyr` type syntax instead. We'll use `dbplyr` to help us out. 
 
 From https://dbplyr.tidyverse.org/: "Note that you don’t actually need to load dbplyr with library(dbplyr); dplyr automatically loads it for you when it sees you working with a database. Database connections are coordinated by the DBI package. Learn more at http://dbi.r-dbi.org/"
 
-#### 8. Create a new database with `dbWriteTable()`
+```{r}
 
+# Convert to a SQL table:
+fish_tbl <- tbl(lter_db, "fish_data")
 
+# Do some wrangling in dplyr format: 
+yearly_fish <- fish_tbl %>% 
+  group_by(year) %>% 
+  summarize(
+    total_fish = sum(total_count)
+  )
+
+# See query:
+yearly_fish %>% show_query() # This will show us what the SQL commands would look like! So cool! 
+
+# Actually run the query by passing it to collect(): 
+yearly_fish %>% collect()
+
+# Then you don't even need to WRITE any SQL code! Thanks dbplyr!
+
+```
+
+#### g. Adding / removing tables in a .sqlite database
+
+What if we want to add a table (e.g. from a data frame or CSV) to an existing database? 
+
+Use `dbWriteTable` to add a new table to an existing database. For example, let's add the `mtcars` dataset to our database, then remove it:  
+```{r}
+# View(mtcars)
+
+# Write the table to our database:
+dbWriteTable(lter_db, "mtcars_df", mtcars)
+
+# Check to see that it's there: 
+DBI::dbListTables(lter_db) # Yup. 
+
+# And we can remove it just as easily: 
+DBI::dbRemoveTable(lter_db, "mtcars_df")
+
+# Now check: 
+DBI::dbListTables(lter_db) # Back to the 3 we started with! 
+
+```
 
 ### C. Python code in R Markdown with `reticulate()`
 
