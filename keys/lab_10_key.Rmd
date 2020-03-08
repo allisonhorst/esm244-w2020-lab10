@@ -220,9 +220,4 @@ DBI::dbListTables(lter_db) # Back to the 3 we started with!
 
 ```
 
-### C. Python code in R Markdown with `reticulate()`
-
-[`reticulate`](https://rstudio.github.io/reticulate/): "R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python >= 2.7. Integration with NumPy requires NumPy version 1.6 or higher."
-
-Note: you need to have Python >=2.7 installed on your computer (what I did: Anaconda download). The `reticulate` package **does not** bring Python along with it. Then you can follow along [here](https://rstudio.github.io/reticulate/) to get up and running with functioning Python code chunks in R Markdown. 
-
+## End SQL in R introduction

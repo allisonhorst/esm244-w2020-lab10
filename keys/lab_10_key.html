@@ -418,8 +418,8 @@ lter_db &lt;- DBI::dbConnect(drv = RSQLite::SQLite(),
 <pre><code>## [1] &quot;year&quot;        &quot;site&quot;        &quot;common_name&quot; &quot;total_count&quot;</code></pre>
 <p>Your turn: what variables exist in the inverts_data and lobsters_data tables?</p>
 </div>
-<div id="d.-cool-use-dbidbreadtable-to-get-a-table" class="section level4">
-<h4>d. Cool! Use <code>DBI::dbReadTable()</code> to get a table:</h4>
+<div id="d.-cool-use-dbidbreadtable-to-get-a-table-as-a-data-frame" class="section level4">
+<h4>d. Cool! Use <code>DBI::dbReadTable()</code> to get a table as a data frame:</h4>
 <pre class="r"><code>fish_df &lt;- DBI::dbReadTable(lter_db, &quot;fish_data&quot;)
 
 # Check the class:
@@ -913,11 +913,9 @@ DBI::dbRemoveTable(lter_db, &quot;mtcars_df&quot;)
 DBI::dbListTables(lter_db) # Back to the 3 we started with! </code></pre>
 <pre><code>## [1] &quot;fish_data&quot;     &quot;inverts_data&quot;  &quot;lobsters_data&quot;</code></pre>
 </div>
-<div id="c.-python-code-in-r-markdown-with-reticulate" class="section level3">
-<h3>C. Python code in R Markdown with <code>reticulate()</code></h3>
-<p><a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a>: “R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python &gt;= 2.7. Integration with NumPy requires NumPy version 1.6 or higher.”</p>
-<p>Note: you need to have Python &gt;=2.7 installed on your computer (what I did: Anaconda download). The <code>reticulate</code> package <strong>does not</strong> bring Python along with it. Then you can follow along <a href="https://rstudio.github.io/reticulate/">here</a> to get up and running with functioning Python code chunks in R Markdown.</p>
 </div>
+<div id="end-sql-in-r-introduction" class="section level2">
+<h2>End SQL in R introduction</h2>
 </div>
 
 
