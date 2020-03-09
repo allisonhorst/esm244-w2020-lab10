@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = TRUE,
 library(tidyverse)
 library(here)
 library(reticulate)
+
+# py_install("library_name")
 ```
 
 ## 2. Python in R Markdown with `reticulate()`
@@ -22,23 +24,17 @@ library(reticulate)
 
 - **Note 1:** you need to have Python >=2.7 installed on your computer (what I did: Anaconda download). The `reticulate` package **does not** bring Python along with it. Then you can follow along [here](https://rstudio.github.io/reticulate/) to get up and running with functioning Python code chunks in R Markdown. 
 
-- **Note 2:** I installed Anaconda for python v 3.7 (yours might be different when you install)
-
-- **Then:** In NEW SHELL/TERMINAL, enter 'which python' or 'which anaconda' ('where' instead of 'which' on PCs) to get path to updated Python version. For example, mine returns: `/opt/anaconda3/bin/python`
-
-#### a. Tell R which Python version to use 
+#### a. Tell R which Python version to use (if needed)
 ```{r}
-use_python("/opt/anaconda3/bin/python")
-py_config()
+# use_python("/opt/anaconda3/bin/python")
+# py_config()
 ```
 
-#### b. Install Python modules with pip
+#### b. Install Python libraries 
 
-Enter in RStudio terminal for installing new modules to the right place (e.g. `dplython`): 
-
-`/opt/anaconda3/bin/pip install dplython`
-
-(...or whatever your path is to python so it gets sent to the right place), for whatever module (e.g pandas, numpy, etc.) you want to install.
+```{r}
+# py_install("scipy")
+```
 
 There are a number of ways to do this, some easier than this. Check out: https://rstudio.github.io/reticulate/index.html for a lot of examples and information. 
 
@@ -73,9 +69,7 @@ Here, I give it a shorter name ("pd") to make it quicker to refer to when I use 
 import pandas as pd
 import matplotlib.pyplot as mp
 # Get specific pieces from dplython
-from dplython import (DplyFrame, X, diamonds, select, sift,
-  sample_n, sample_frac, head, arrange, mutate, group_by,
-  summarize, DelayFunction)
+from dplython import (DplyFrame, X, head, arrange, mutate, select, group_by, summarize)
   
 ```
 
