@@ -6,6 +6,10 @@
 import pandas as pd
 import matplotlib.pyplot as mp
 
+# Note that the Console is now a Python REPL (>>> instead of the usual >)
+# You can exit back to R by typing "exit" + Return
+# Or by pressing Escape while in the Console
+
 # Read in some data:
 ex_data = pd.read_csv('data/my_data.csv')
 

@@ -18,9 +18,6 @@ library(janitor)
 # For working with SQLite databases: 
 library(DBI)
 library(RSQLite)
-
-# For interfacing between R and Python:
-library(reticulate)
 ```
 
 ## 1. SQL in R Markdown with `DBI` and `RSQLite`

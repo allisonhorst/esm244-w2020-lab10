@@ -13,6 +13,8 @@ library(tidyverse)
 library(here)
 library(reticulate)
 
+# py_config() # Check info on Python & NumPy versions 
+
 # py_install("library_name")
 ```
 
@@ -26,7 +28,7 @@ library(reticulate)
 
 #### a. Tell R which Python version to use (if needed)
 ```{r}
-# use_python("/opt/anaconda3/bin/python")
+# use_python("path/to/python")
 # py_config()
 ```
 
@@ -153,3 +155,16 @@ print(foo_py)
 ```{python}
 mp.scatter('weight_lb', 'height_m', s = 100, data = foo_py)
 ```
+
+But also, what if I just want to get this to be an R data frame? No problem! 
+```{r}
+my_df <- py$df_py
+class(my_df)
+```
+
+We have seen a number of different ways to use Python in RStudio, and with R code, including: 
+
+1. Run Python scripts (.py) in R Studio
+2. Write Python code in R Markdown thanks to `reticulate` 
+3. Call Python objects (e.g. pandas DataFrames) in R code chunks with `py$object_name`
+
