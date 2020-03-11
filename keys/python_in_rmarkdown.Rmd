@@ -1,0 +1,181 @@
+---
+title: "Python in R with reticulate"
+author: "Allison Horst"
+output: html_document
+---
+
+## Python in R (Markdown) with `reticulate`
+
+Hi 244ers! In this part of the lab, I'll demo how to work with Python in R Markdown, using the `reticulate` package. 
+
+### Background: 
+
+[`reticulate`](https://rstudio.github.io/reticulate/): "R interface to Python modules, classes, and functions. When calling into Python R data types are automatically converted to their equivalent Python types. When values are returned from Python to R they are converted back to R types. The reticulate package is compatible with all versions of Python >= 2.7."
+
+- **Note 1:** You can follow along [here](https://docs.rstudio.com/tutorials/user/using-python-with-rstudio-and-reticulate/) to install Python and get up and running with a virtual environment so that you can Py in R too (through Step 5). 
+
+#### a. Create a new .Rmd and attach packages
+
+First, create a new R Markdown document. Then attach the packages we'll need for this part of the lab: 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+
+library(tidyverse)
+library(here)
+library(reticulate)
+```
+
+#### b. Check python configuration
+```{r}
+py_config()
+```
+
+#### c. Tell R which Python version to use (if needed)
+
+**Note:** Once you set up your virtual environmental by following the path above, you shouldn't need to do this (but can, if you want to use a different Python version that exists on your computer)
+```{r}
+# use_python("path/to/python")
+# py_config()
+```
+
+#### d. Install Python libraries 
+
+Like we install R packages that contain functions or tools we want to use, we might also need to install Python libraries. Check out: https://rstudio.github.io/reticulate/index.html for a lot of examples and information on how you can do that - or use the `reticulate::py_install("library_name")` function for R-like installation syntax!
+
+For example, if I wanted to install SciPy: 
+```{r}
+# py_install("scipy")
+```
+
+#### e. Just generally working in a Py code chunk
+
+...nothing super special here. Click Insert > Python, and you'll see a new code chunk that has a {python} header. That means that code chunk will be expecting Python code. 
+
+We can use it as a basic editor, for example: 
+
+```{python}
+a = 4
+b = 10
+c = a + b
+c
+```
+
+How can I call those in the Console, or later on in an R code chunk? use `py$object_name` to make sure that R knows you're looking for a Python variable (e.g. `py$a`). 
+
+#### f. Import libraries
+
+In R, we *install* packages, but also have to *attach* them when we want them available for use. Similarly, we need to *import* Python packages that we've installed so that we can use them. 
+
+The Python libraries (that I have already installed) I'll use are:
+
+- `pandas`: for exploring & wrangling data frames (also using tidy structure)
+- `matplotlib`: is a graphics library
+- `dplython`: functions for wrangling that are similar to `dplyr` in R
+
+Here, I given Pandas a shorter name ("pd") to make it quicker to refer to when I use it later on, but don't have to. 
+```{python}
+# Attach modules
+import pandas as pd
+import matplotlib.pyplot as mp
+# Get specific pieces from dplython
+from dplython import (DplyFrame, X, head, arrange, mutate, select, group_by, summarize)
+  
+```
+
+#### g. Reading in and exploring data
+
+Comparison of common functions: 
+https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_r.html
+
+Starting from `my_data.csv`
+
+- Do some exploring first with R code (View, head, tail, names, dim)
+```{r}
+
+df_r <- read_csv(here("data", "my_data.csv"))
+
+View(df_r) # Return entire data frame
+head(df_r) # Return first 6 lines
+tail(df_r) # Return last 6 lines
+names(df_r) # Return variable names
+dim(df_r) # Return dimensions
+
+```
+
+Let's do the same with Python code!
+
+First: read it in (`pandas.read_csv`)
+```{python}
+df_py = DplyFrame(pd.read_csv("../data/my_data.csv"))
+```
+
+Then look at it using similar functions: 
+```{python}
+print(df_py) # View it
+```
+
+```{python}
+df_py.head(3) # Return the first 3 rows
+```
+
+```{python}
+df_py.tail(2) # Return the last 2 rows
+```
+
+```{python}
+list(df_py) # Return the column names
+````
+
+```{python}
+df_py.shape # Returns dimensions
+```
+
+#### h. Wrangling similarities between R and Python 
+
+Now let's do some wrangling and viz, first in R, then showing how to do the same thing in Python. Here, starting from df_r or df_py, we'll: 
+
+- Only keep observations where weight is greater than 12 pounds
+- Just keep columns species, weight_lb and height_m
+- Add a new column for the weight/height ratio
+- Make a scatterplot
+
+```{r}
+# Do the wrangling:
+new_r <- df_r %>% 
+  filter(weight_lb > 12) %>% 
+  select(species, weight_lb, height_m) %>% 
+  mutate(ratio = weight_lb / height_m)
+
+# Then make a graph with ggplot2:
+ggplot(data = new_r, aes(x = weight_lb, y = height_m)) +
+  geom_point(size = 4)
+```
+
+Let's do the same in Python
+Note: `>>` operator is in `dplython` module
+```{python}
+new_py = df_py >> select(X.weight_lb, X.height_m) >> X.query('weight_lb > 12') >> X.assign(ratio = X['weight_lb'] / X['height_m'])
+
+print(new_py)
+
+# So it's the same thing, and we can plot with matplotlib
+```
+
+```{python}
+mp.scatter('weight_lb', 'height_m', data = new_py)
+```
+
+But also, what if I just want to get this to be an R data frame? No problem! 
+```{r}
+my_df <- py$df_py
+class(my_df)
+```
+
+We have seen a number of different ways to use Python in RStudio, and with R code, including: 
+
+1. Run Python scripts (.py) in R Studio
+2. Write Python code in R Markdown thanks to `reticulate` 
+3. Call Python objects (e.g. pandas DataFrames) in R code chunks with `py$object_name`
+
