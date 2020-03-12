@@ -68,7 +68,9 @@ c = a + b
 c # This will return c
 ```
 
-How can I call those in the Console, or later on in an R code chunk, which is expecting R? use `py$object_name` to make sure that R knows you're looking for a Python variable. For example, after running the code chunk above,
+How can I call those in the Console, or later on in an R code chunk, which is expecting R? use `py$object_name` to make sure that R knows you're looking for a Python variable. 
+
+For example, after running the code chunk above,
 type `py$c` into the R Console and see that it returns the value of that python object! 
 
 #### e. Import Python libraries
@@ -81,11 +83,12 @@ The Python libraries (that I have already installed) I'll use are:
 - `matplotlib`: is a graphics library
 - `dplython`: functions for wrangling that are similar to `dplyr` in R
 
-Here, I given Pandas a shorter name ("pd") to make it quicker to refer to when I use it later on, but don't have to. 
+Here, I given pandas and matplotlib.pyplot (a module in matplotlib) shorter "nicknames" to refer to when I use it later on, but don't have to. 
 ```{python}
 # Attach modules
 import pandas as pd
 import matplotlib.pyplot as mp
+
 # Get specific pieces from dplython
 from dplython import (DplyFrame, X, head, arrange, mutate, select, group_by, summarize)
   
